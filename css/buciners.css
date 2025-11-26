@@ -1,53 +1,8 @@
 /* buciners.css */
 
-/* 
- * File ini mengatur visibility kontainer utama
- * Kontainer disembunyikan di awal dan akan dimunculkan
- * setelah tombol diklik dengan jQuery fadeIn
- */
-
+/* File ini mengatur visibility kontainer utama */
 .kontener {
     display: none;
 }
 
-/* 
- * Additional utility classes (optional)
- * Bisa ditambahkan jika diperlukan
- */
-
-/* Hide element completely */
-.hidden {
-    display: none !important;
-}
-
-/* Show element */
-.visible {
-    display: block !important;
-}
-
-/* Fade animation helper */
-.fade-in {
-    animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.fade-out {
-    animation: fadeOut 0.8s ease-out;
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
+/* Hapus file ini jika Anda tidak menggunakannya dan pindahkan .kontener { display: none; } ke style.css */
