@@ -1,101 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
-  
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday Ayla Rahma Dianty! 💖</title>
   <meta name="description" content="Selamat Ulang Tahun Sayangku Ayla Rahma Dianty!">
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/efekteks.css">
-    
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    
-  <style>
-    /* Memastikan rotasi ikon burger simetris */
-    .buka_menu .tombol_menu::before {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    .buka_menu .tombol_menu::after {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-  </style>
-
 </head>
 
 <body>
+  <!-- Floating Hearts -->
+  <div class="hearts" id="hearts"></div>
+
+  <!-- Halaman Awal -->
   <div class="kontener2" id="kontener2">
-    <h1>Happy Birthday<br>Ayla Rahma Dianty!</h1>
-    <p>Klik tombol di bawah ini untuk kejutan kecil dariku, Sayang.</p>
-    <button class="tombol" id="tombol">Buka Sekarang</button>
+    <h1>🎂 Happy Birthday 🎂</h1>
+    <h2 style="color: #e73c7e; font-family: 'Dancing Script', cursive; font-size: 2em; margin: 10px 0;">Ayla Rahma Dianty</h2>
+    <p>Klik tombol di bawah ini untuk kejutan spesial dariku untukmu, Sayang. ❤️</p>
+    <button class="tombol" id="tombol">
+      <span style="position: relative; z-index: 1;">✨ Buka Kejutan ✨</span>
+    </button>
   </div>
 
+  <!-- Halaman Utama -->
   <div class="kontener" id="kontener">
-    <div class="background-hearts"></div> 
-    
     <div class="dalemnya_kontener">
-      <h1 class="judul_halaman">I Love You</h1>
+      <h1 class="judul_halaman">I Love You ❤️</h1>
       <a class="tombol_menu" onclick="klikMenu()"></a>
-      
+
       <section class="halaman1 dalemnya_halaman" onclick="PindahKeHalaman(0)">
-        <h2 class="judul_section">Aku</h2>
+        <h1 class="judul_halaman">Aku 💕</h1>
         <br>
-        <img src="gambar/gambar1.jpg" alt="Ayla Rahma Dianty" class="gambar">
+        <img src="gambar/gambar1.jpg" alt="Love" class="gambar">
         <br>
         <div class="ucapan1">
-          <p class="isiucapan1">Kamu adalah rumah yang selalu kurindukan. Tempat di mana hatiku menemukan kedamaian dan segala kekuranganku terasa sempurna.</p>
+          <p class="isiucapan1">Ayla, kamu adalah <strong>rumah</strong> yang selalu kurindukan. Tempat di mana hatiku menemukan kedamaian dan segala kekuranganku terasa sempurna. Bersamamu, aku merasa lengkap. 🏡💖</p>
         </div>
       </section>
-      
+
       <section class="halaman2 dalemnya_halaman" onclick="PindahKeHalaman(1)">
-        <h2 class="judul_section">Sayang</h2>
+        <h1 class="judul_halaman">Sayang 💗</h1>
         <br>
-        <img src="gambar/gambar2.jpg" alt="Ayla Rahma Dianty" class="gambar">
+        <img src="gambar/gambar2.jpg" alt="Love" class="gambar">
         <br>
         <div class="ucapan2">
-          <p class="isiucapan2">Menyayangimu adalah keputusan terbaik yang pernah kuambil. Melihat senyummu sudah cukup untuk menerangi seluruh hariku.</p>
+          <p class="isiucapan2">Menyayangi Ayla adalah keputusan terbaik yang pernah kuambil. Melihat senyummu sudah cukup untuk menerangi seluruh hariku. Kamu adalah alasan aku tersenyum setiap hari. 😊✨</p>
         </div>
       </section>
-      
+
       <section class="halaman3 dalemnya_halaman" onclick="PindahKeHalaman(2)">
-        <h2 class="judul_section">Kamu</h2>
+        <h1 class="judul_halaman">Kamu 🌟</h1>
         <br>
-        <img src="gambar/gambar3.jpg" alt="Ayla Rahma Dianty" class="gambar">
+        <img src="gambar/gambar3.jpg" alt="Love" class="gambar">
         <br>
         <div class="ucapan3">
-          <p class="isiucapan3">Di mataku, kamu bukan hanya belahan jiwa, tapi juga motivasi terbesar. Bersamamu, aku siap menghadapi apa pun yang terjadi.</p>
+          <p class="isiucapan3">Di mataku, Ayla bukan hanya belahan jiwa, tapi juga <strong>motivasi</strong> terbesar dalam hidupku. Bersamamu, aku siap menghadapi apa pun yang terjadi. Kamu kekuatanku! 💪❤️</p>
         </div>
       </section>
-      
+
       <section class="halaman4 dalemnya_halaman" onclick="PindahKeHalaman(3)">
-        <h1 class="judul_halaman">Ayla Rahma Dianty</h1>
+        <h1 class="judul_halaman">Ayla Rahma Dianty 🎉</h1>
         <br>
         <div id="waktu"></div>
-        
+
         <div class="ucapan-wrapper">
           <center>
-            <h1 class='ucapan'>Happy Birthday, My Love!</h1>
-            <p class='isiucapan'>Hi, this is your day and I want to say some things; All of these years, I'm grateful to have known you. Nothing can make my day infinitely better than you. But I hope you know that you're always enough. I hope you live your life freely, joyfully, and peacefully. No one in the world deserves a bad life, including you. ❤️🎂</p>
+            <h1 class='ucapan'>Happy Birthday, My Love! 🎂</h1>
+            <p class='isiucapan'>
+              Hi Ayla, this is your special day and I want to say some things; 
+              All of these years, I'm so grateful to have known you. Nothing can make my day infinitely better than you. 
+              But I hope you know that you're always enough. I hope you live your life freely, joyfully, and peacefully. 
+              No one in the world deserves a bad life, including you. 
+              You deserve all the happiness in the world! ❤️🎂✨
+            </p>
           </center>
         </div>
-        
-        <p class="hadiah-text" style="text-align: center; margin-top: 25px; font-weight: 600; color: #f75d5d;">🎁 Ada hadiah kejutan dari aku untukmu! 🎁</p>
-        <a href="GANTI_DENGAN_LINK_DANA_KAGET_ANDA" class="dana-button" target="_blank">
-            🎉 Kado Spesial Ulang Tahun 🎉
-        </a>
-        
+
+        <p class="gift-text">🎁 Ada hadiah kejutan spesial untukmu! 🎁</p>
+        <center>
+          <a href="GANTI_DENGAN_LINK_DANA_KAGET_ANDA" class="dana-button" target="_blank">
+            💝 Kado Spesial Ulang Tahun! 💝
+          </a>
+        </center>
       </section>
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdn.rawgit.com/bungfrangki/efeksalju/2a7805c7/efek-salju.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/bungfrangki/efeksalju/2a7805c7/efek-salju.js"></script>
   <script src="js/script.js"></script>
 </body>
-
 </html>
