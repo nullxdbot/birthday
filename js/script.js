@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function formatAMPM() {
       // Tanggal ulang tahun statis (Rabu, 10 Desember 2025)
-      return '<div class="ml1"><span class="text-wrapper"><span class="line line1"></span><span class="letters">Rabu, 10 Desember 2025</span><span class="line line2"></span></span></div><p class="ml2"> Hari Ulang Tahun Araichyy! </p>';
+      return '<div class="ml1"><span class="text-wrapper"><span class="line line1"></span><span class="letters">Rabu, 10 Desember 2025</span><span class="line line2"></span></span></div><p class="ml2"> Hari Ulang Tahun Ayla Rahma Dianty! </p>';
     }
 
     // --- 3. LOGIC AUDIO & FADE (Fungsi JQuery) ---

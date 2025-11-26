@@ -257,7 +257,7 @@ section .gambar {
 }
 
 .heart-burst::before, .heart-burst::after {
-    content: '💖'; /* Atau gunakan simbol '❤️' atau '✨' */
+    content: '💖'; 
     position: absolute;
     font-size: 1.5em; 
     opacity: 0;
@@ -265,11 +265,11 @@ section .gambar {
 }
 
 .heart-burst::before {
-    transform: translate(-10px, -10px) rotate(20deg);
+    --tx: -15px; --ty: -15px;
 }
 
 .heart-burst::after {
-    transform: translate(10px, 10px) rotate(-20deg);
+    --tx: 15px; --ty: 15px;
     animation-delay: 0.1s;
 }
 
@@ -277,14 +277,6 @@ section .gambar {
     0% { transform: translate(0, 0) scale(0); opacity: 0; }
     50% { transform: translate(var(--tx, 0), var(--ty, 0)) scale(1); opacity: 1; }
     100% { transform: translate(var(--tx, 0), var(--ty, 0)) scale(0.5); opacity: 0; }
-}
-
-/* Override positions for heart burst */
-.heart-burst::before {
-    --tx: -15px; --ty: -15px;
-}
-.heart-burst::after {
-    --tx: 15px; --ty: 15px;
 }
 
 @keyframes heartFadeOut {

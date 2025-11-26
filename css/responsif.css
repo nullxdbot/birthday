@@ -1,5 +1,6 @@
-/* responsif.css */
-/* Untuk mengatur tampilan pada layar kecil (HP) */
+/*Author    : Farrel Aulia Irfealdo*/
+/*Instagram : https://instagram.com/null.xd_*/
+/*Website   : https://tako.id/nullxd*/
 
 @media (max-width: 768px) {
     
@@ -8,7 +9,7 @@
         font-size: 2em;
     }
     
-    /* Ukuran Header Tetap (I Love You / Araichyy) */
+    /* Ukuran Header Tetap (I Love You / Ayla Rahma Dianty) */
     .judul_halaman {
         font-size: 1.5rem;
     }
@@ -16,7 +17,7 @@
     /* Ukuran Judul Halaman Konten (Aku, Sayang, Kamu) */
     .dalemnya_halaman .judul_section {
         font-size: 1.8em; 
-        margin-top: 20px; /* Jarak disesuaikan untuk layar kecil */
+        margin-top: 20px; /* Jarak dikurangi untuk layar kecil */
     }
     
     /* Gambar menyesuaikan layar kecil */
