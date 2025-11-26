@@ -27,7 +27,7 @@
   <a href="https://tiktok.com/@farrel.aulia.irfealdo" target="_blank">
     <img src="https://img.shields.io/badge/TikTok-%23000000.svg?logo=TikTok&logoColor=white"/>
   </a>
-  <a href="https://youtube.com/@NullXD-MD" target="_blank">
+  <a href="https://youtube.com/@Tenka-MD" target="_blank">
     <img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white"/>
   </a>
   <br/>
@@ -49,17 +49,8 @@ Web Bucin khusus buat orang tercinta & tersayang, dilengkapi dengan fitur yang m
 
 ---
 
-## 🛠️ My Tech Stack (Top Languages)
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=nullxdbot&theme=radical&hide_border=false&include_all_commits=true&count_private=true&layout=compact" alt="Top Languages"/>
-</p>
-
----
-
 ## 📈 GitHub Stats
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=nullxdbot&theme=radical&hide_border=false&include_all_commits=true&count_private=true" alt="GitHub Stats"/>
-  <br/>
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=nullxdbot&theme=radical&hide_border=false" alt="GitHub Streak Stats"/>
 </p>
 
@@ -68,12 +59,4 @@ Web Bucin khusus buat orang tercinta & tersayang, dilengkapi dengan fitur yang m
 ## 🏆 Achievements & Trophies
 <p align="center">
   <img src="https://github-profile-trophy.vercel.app/?username=nullxdbot&theme=radical&no-frame=false&no-bg=false&margin-w=4" alt="GitHub Trophies"/>
-</p>
-
----
-
-<p align="center">
-  <a href="https://visitcount.itsvg.in">
-    <img src="https://visitcount.itsvg.in/api?id=nullxdbot&icon=10&color=0" alt="Visitor Count"/>
-  </a>
 </p>
