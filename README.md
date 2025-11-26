@@ -27,7 +27,7 @@
   <a href="https://tiktok.com/@farrel.aulia.irfealdo" target="_blank">
     <img src="https://img.shields.io/badge/TikTok-%23000000.svg?logo=TikTok&logoColor=white"/>
   </a>
-  <a href="https://youtube.com/@Tenka-MD" target="_blank">
+  <a href="https://youtube.com/@NullXD-MD" target="_blank">
     <img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white"/>
   </a>
   <br/>
