@@ -10,6 +10,7 @@ body,
 html {
   -webkit-tap-highlight-color: transparent;
   height: 100%;
+  /* Soft Gradient Background */
   background: linear-gradient(-45deg, #fcefee, #fcf4f7, #f7f1f7, #f3f0f7); 
   background-size: 400% 400%;
   animation: animasiBegron 15s ease infinite;
@@ -27,35 +28,40 @@ html {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%); /* Centering absolut */
   width: 90%;
   max-width: 400px;
 }
+
 .kontener2 h1 {
   color: #333333; 
   font-family: 'Playfair Display', serif;
-  font-size: 2.8em; 
-  margin-bottom: 10px;
+  font-size: 2.5em;
+  margin-bottom: 20px;
 }
+
 .kontener2 p {
-  color: #666; 
-  font-size: 1.1em;
-  margin-bottom: 30px;
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 1.1em;
 }
+
 .kontener2 .tombol {
-  background: linear-gradient(45deg, #ff6b82, #ff8c94);
+  padding: 12px 30px;
+  background: linear-gradient(45deg, #ff8c94, #ff6b82); 
   color: white;
+  outline: none;
   border: none;
-  padding: 15px 30px;
-  font-size: 1.2em;
-  font-weight: 600;
   border-radius: 50px;
-  box-shadow: 0 4px 15px rgba(255, 107, 130, 0.4);
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 5px 15px rgba(255, 107, 130, 0.4);
   transition: all 0.3s ease;
 }
+
 .kontener2 .tombol:hover {
   cursor: pointer;
-  background: linear-gradient(45deg, #ff576b, #ff7a87);
+  background: linear-gradient(45deg, #ff6b82, #ff8c94);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(255, 107, 130, 0.6);
 }
@@ -64,7 +70,8 @@ html {
 .kontener {
   padding: 20px;
   height: 100%;
-  /* display: none; -> Dipindahkan ke buciners.css */
+  /* Dari buciners.css */
+  display: none; 
 }
 
 /* Container Utama (Card Putih) */
@@ -74,15 +81,14 @@ html {
   width: 100%;
   max-width: 600px;
   height: 94%;
-  margin: 0 auto; 
+  margin: 0 auto; /* Centering Card */
   overflow: hidden;
   position: relative;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  z-index: 10;
 }
 
-/* HEADER UTAMA CARD (Fixed di atas) */
+/* HEADER - Dibuat Fixed dan Simetris */
 .judul_halaman {
   color: #333333; 
   font-weight: 700;
@@ -91,16 +97,15 @@ html {
   text-align: center;
   margin: 0;
   line-height: 70px;
-  background: #eeeeee; 
+  background: #eeeeee; /* Bar header */
   position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
   z-index: 101; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* ICON MENU */
+/* ICON MENU - Perbaikan Simetris */
 .tombol_menu {
   position: absolute;
   z-index: 102; 
@@ -112,7 +117,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; 
+  align-items: center; /* Centering Garis Burger */
   padding: 0 10px;
 }
 .tombol_menu::before, .tombol_menu::after {
@@ -125,7 +130,7 @@ html {
     transition: transform 0.3s ease;
 }
 
-/* KONTEN HALAMAN (Area Scrollable) */
+/* KONTEN HALAMAN - Diberi Padding Agar Tidak Terpotong */
 .dalemnya_halaman {
   position: absolute;
   top: 0;
@@ -134,100 +139,66 @@ html {
   height: 100%;
   -webkit-transition: -webkit-transform 0.3s;
   padding: 30px 20px;
-  padding-top: 70px; /* Jarak dari header fixed */
+  padding-top: 70px; /* Jarak dari header fixed untuk mencegah pemotongan */
   box-sizing: border-box; 
-  overflow-y: auto; 
-  z-index: 1; 
+  overflow-y: auto; /* Agar bisa scroll */
 }
 
-/* WAJIB: Style Judul Konten (Aku, Sayang, Kamu) agar tidak tertutup */
-.dalemnya_halaman .judul_section {
-    font-family: 'Playfair Display', serif;
-    color: #ff6b82; 
-    font-weight: 700;
-    font-size: 2em;
-    margin-top: 40px; /* Jarak yang cukup dari header */
-    margin-bottom: 30px; 
-    text-align: center;
-    line-height: 1.2;
-    z-index: 5; 
-    position: relative; 
-}
-
-/* Style Gambar */
 section .gambar {
-  max-width: 80%;
-  height: auto;
   border-radius: 10px;
+  max-width: 90%;
+  height: auto;
+  margin-top: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
 }
 
-/* Style Ucapan */
-.ucapan1, .ucapan2, .ucapan3 {
-  margin-top: 30px;
-  padding: 0 10px;
-  text-align: center;
-}
-.isiucapan1, .isiucapan2, .isiucapan3 {
+section .isiucapan1, .isiucapan2, .isiucapan3, .isiucapan {
+  color: #555555;
+  width: 88%; 
   font-weight: 400;
-  line-height: 1.7;
-  color: #666;
-  max-width: 450px;
-  margin: 0 auto;
+  line-height: 1.6;
+  margin: 15px auto 0 auto; /* Centering Teks Ucapan */
 }
 
-/* Navigasi Slide */
-.dalemnya_kontener.page-halaman1 .halaman1 {
-  -webkit-transform: translateX(0);
+/* Halaman Tabs - Warna Seragam */
+section.halaman1, section.halaman2, section.halaman3, section.halaman4 {
+  background: #ffffff; 
 }
-.dalemnya_kontener.page-halaman2 .halaman2 {
-  -webkit-transform: translateX(0);
-}
-.dalemnya_kontener.page-halaman3 .halaman3 {
-  -webkit-transform: translateX(0);
-}
-.dalemnya_kontener.page-halaman4 .halaman4 {
-  -webkit-transform: translateX(0);
+section.halaman4 {
+    background: #fff8f8; 
 }
 
-.halaman1.after {
-  -webkit-transform: translateX(100%);
-  -webkit-transition-delay: 0s;
+/* Kode Transisi (Tetap) */
+section.after {
+  -webkit-transform: translateY(100%);
 }
-.halaman2.before {
-  -webkit-transform: translateX(-100%);
-  -webkit-transition-delay: 0s;
-}
-.halaman2.after {
-  -webkit-transform: translateX(100%);
-  -webkit-transition-delay: 0s;
-}
-.halaman3.before {
-  -webkit-transform: translateX(-100%);
-  -webkit-transition-delay: 0s;
-}
-.halaman3.after {
-  -webkit-transform: translateX(100%);
-  -webkit-transition-delay: 0s;
-}
-.halaman4.before {
-  -webkit-transform: translateX(-100%);
-  -webkit-transition-delay: 0s;
-}
+.buka_menu section.halaman1 { -webkit-transform: translateY(70px); -webkit-transition-delay: 0.15s; }
+.buka_menu section.halaman2 { -webkit-transform: translateY(140px); -webkit-transition-delay: 0.1s; }
+.buka_menu section.halaman3 { -webkit-transform: translateY(210px); -webkit-transition-delay: 0.05s; }
+.buka_menu section.halaman4 { -webkit-transform: translateY(280px); -webkit-transition-delay: 0s; }
 
-/* Animasi Bekgron */
+
+/* Animasi Bekgron tetap sama */
 @keyframes animasiBegron {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
+/* --- STYLING KHUSUS DANA DAN RESPONSIF --- */
 
 /* Styling Tombol Hadiah Dana */
 .dana-button {
     display: inline-block;
-    background: #00d4aa; 
+    background: #00d4aa; /* Warna hijau khas Dana */
     color: white;
     padding: 15px 30px;
     border-radius: 50px;
@@ -240,46 +211,50 @@ section .gambar {
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 212, 170, 0.4);
 }
+
 .dana-button:hover {
     transform: scale(1.05);
 }
 
-/* --- EFEK HEART BURST (DIPANGGIL DARI script.js) --- */
-.heart-burst {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    pointer-events: none;
-    z-index: 1000;
-    transform: translate(-50%, -50%);
-    animation: heartFadeOut 0.5s ease-out forwards;
+/* Responsifitas */
+@media (max-width: 768px) {
+    .kontener2 h1 {
+        font-size: 2em;
+    }
+    .judul_halaman {
+        font-size: 1.5rem;
+    }
+    section .gambar {
+        max-width: 95%;
+    }
+    .ml1 {
+        font-size: 1.2em;
+    }
+    .ml2 {
+        font-size: 1em;
+    }
 }
 
-.heart-burst::before, .heart-burst::after {
-    content: '💖'; 
-    position: absolute;
-    font-size: 1.5em; 
-    opacity: 0;
-    animation: heartFly 0.5s ease-out forwards;
-}
-
-.heart-burst::before {
-    --tx: -15px; --ty: -15px;
-}
-
-.heart-burst::after {
-    --tx: 15px; --ty: 15px;
-    animation-delay: 0.1s;
-}
-
-@keyframes heartFly {
-    0% { transform: translate(0, 0) scale(0); opacity: 0; }
-    50% { transform: translate(var(--tx, 0), var(--ty, 0)) scale(1); opacity: 1; }
-    100% { transform: translate(var(--tx, 0), var(--ty, 0)) scale(0.5); opacity: 0; }
-}
-
-@keyframes heartFadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+@media (max-width: 480px) {
+    .kontener2 h1 {
+        font-size: 1.8em;
+    }
+    .kontener2 .tombol {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .judul_halaman {
+        font-size: 1.4rem;
+        line-height: 60px; 
+    }
+    .tombol_menu {
+        height: 60px; 
+    }
+    .dalemnya_halaman {
+        padding-top: 60px; 
+    }
+    .dana-button {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
 }
