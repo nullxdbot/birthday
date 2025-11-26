@@ -11,46 +11,64 @@
   
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/efekteks.css">
-  <link rel="stylesheet" href="css/buciners.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
 
 <body>
+  <!-- Floating Hearts -->
   <div class="hearts" id="hearts"></div>
 
+  <!-- Halaman Awal -->
   <div class="kontener2" id="kontener2">
     <h1>🎂 Happy Birthday 🎂</h1>
     <h2 style="color: #e73c7e; font-family: 'Dancing Script', cursive; font-size: 2em; margin: 10px 0;">Ayla Rahma Dianty</h2>
-    <p>Klik tombol di bawah ini untuk kejutan spesial dariku untukmu, Sayang....</p>
-    <button id="tombol" class="tombol">Klik untuk Kejutan!</button>
+    <p>Klik tombol di bawah ini untuk kejutan spesial dariku untukmu, Sayang. ❤️</p>
+    <button class="tombol" id="tombol">
+      <span style="position: relative; z-index: 1;">✨ Buka Kejutan ✨</span>
+    </button>
   </div>
 
+  <!-- Halaman Utama -->
   <div class="kontener" id="kontener">
     <div class="dalemnya_kontener">
-      
-      <h1 class="judul_halaman">Ayla Rahma Dianty 🎂</h1>
-      
-      <a id="menu-toggle-btn" class="tombol_menu"></a>
+      <h1 class="judul_halaman">I Love You ❤️</h1>
+      <a class="tombol_menu" onclick="klikMenu()"></a>
 
-      <button id="audio-toggle" class="audio-toggle">🎵</button>
-
-      <section class="halaman1 dalemnya_halaman" data-page-index="0">
-        <h1 class="judul-section">Satu</h1>
-        <p class="isi-section">Kamu adalah sinar matahari yang menerangi hari-hariku. Tidak ada yang bisa menggantikan tempatmu di hatiku. Selamat ulang tahun, cintaku! 💖</p>
-      </section>
-
-      <section class="halaman2 dalemnya_halaman" data-page-index="1">
-        <h1 class="judul-section">Dua</h1>
-        <p class="isi-section">Setiap momen bersamamu adalah hadiah. Terima kasih telah menjadi teman hidupku. Bersamamu, aku siap menghadapi apa pun yang terjadi. Kamu kekuatanku! 💪❤️</p>
-      </section>
-
-      <section class="halaman3 dalemnya_halaman" data-page-index="2">
-        <h1 class="judul-section">Tiga</h1>
-        <p class="isi-section">Tidak peduli seberapa jauh kita terpisah, hatiku selalu bersamamu. Aku mencintaimu lebih dari kata-kata yang bisa kuucapkan. Cepat kembali ke pelukanku. 🤗</p>
-      </section>
-
-      <section class="halaman4 dalemnya_halaman" data-page-index="3">
+      <section class="halaman1 dalemnya_halaman" onclick="PindahKeHalaman(0)">
+        <h1 class="judul_halaman">Aku 💕</h1>
         <br>
-        <div id="waktu"></div> 
+        <img src="gambar/gambar1.jpg" alt="Love" class="gambar">
+        <br>
+        <div class="ucapan1">
+          <p class="isiucapan1">Ayla, kamu adalah <strong>rumah</strong> yang selalu kurindukan. Tempat di mana hatiku menemukan kedamaian dan segala kekuranganku terasa sempurna. Bersamamu, aku merasa lengkap. 🏡💖</p>
+        </div>
+      </section>
+
+      <section class="halaman2 dalemnya_halaman" onclick="PindahKeHalaman(1)">
+        <h1 class="judul_halaman">Sayang 💗</h1>
+        <br>
+        <img src="gambar/gambar2.jpg" alt="Love" class="gambar">
+        <br>
+        <div class="ucapan2">
+          <p class="isiucapan2">Menyayangi Ayla adalah keputusan terbaik yang pernah kuambil. Melihat senyummu sudah cukup untuk menerangi seluruh hariku. Kamu adalah alasan aku tersenyum setiap hari. 😊✨</p>
+        </div>
+      </section>
+
+      <section class="halaman3 dalemnya_halaman" onclick="PindahKeHalaman(2)">
+        <h1 class="judul_halaman">Kamu 🌟</h1>
+        <br>
+        <img src="gambar/gambar3.jpg" alt="Love" class="gambar">
+        <br>
+        <div class="ucapan3">
+          <p class="isiucapan3">Di mataku, Ayla bukan hanya belahan jiwa, tapi juga <strong>motivasi</strong> terbesar dalam hidupku. Bersamamu, aku siap menghadapi apa pun yang terjadi. Kamu kekuatanku! 💪❤️</p>
+        </div>
+      </section>
+
+      <section class="halaman4 dalemnya_halaman" onclick="PindahKeHalaman(3)">
+        <h1 class="judul_halaman">Ayla Rahma Dianty 🎉</h1>
+        <br>
+        <div id="waktu"></div>
 
         <div class="ucapan-wrapper">
           <center>
@@ -67,7 +85,7 @@
 
         <p class="gift-text">🎁 Ada hadiah kejutan spesial untukmu! 🎁</p>
         <center>
-          <a href="#" class="dana-button" target="_blank"> 
+          <a href="GANTI_DENGAN_LINK_DANA_KAGET_ANDA" class="dana-button" target="_blank">
             💝 Kado Spesial Ulang Tahun! 💝
           </a>
         </center>
@@ -76,8 +94,7 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
   <script src="https://cdn.rawgit.com/bungfrangki/efeksalju/2a7805c7/efek-salju.js"></script>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

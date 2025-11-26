@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const heartsContainer = document.getElementById('hearts');
         if (heartsContainer) {
             heartsContainer.appendChild(heart);
-            setTimeout(() => heart.remove(), 10000); 
+            setTimeout(() => heart.remove(), 10000);
         }
     }
 
@@ -22,121 +22,83 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(createHeart, 800);
 
     // ============================================
-    // 2. AUDIO & FADE EFFECTS
+    // 2. NAVIGATION SYSTEM
     // ============================================
     
-    // Inisialisasi Audio (Pastikan file audio/audio.mp3 ada!)
-    const audio = new Audio('audio/audio.mp3');
-    audio.loop = true; 
-    let isAudioPlaying = false;
-    
-    const $tombol = $("#tombol");
-    const $kontener2 = $("#kontener2");
-    const $kontener = $("#kontener");
-    const $audioToggle = $("#audio-toggle");
+    // Global pages array
+    window.pages = ['halaman1', 'halaman2', 'halaman3', 'halaman4'];
 
-    // Event Klik Tombol Buka Kejutan
-    $tombol.on('click', function () {
-        $kontener2.fadeOut(800, function() {
-            $kontener.fadeIn(1500);
-            PindahKeHalaman(0); // Pindah ke halaman 1 setelah fade in
-        });
+    // Toggle menu function
+    window.klikMenu = function() {
+        document.querySelector('.dalemnya_kontener').classList.toggle('buka_menu');
+    }
+
+    // Navigate to specific page
+    window.PindahKeHalaman = function(page) {
+        const dalemnya_kontener = document.querySelector('.dalemnya_kontener');
+        const sections = document.querySelectorAll('.dalemnya_halaman');
         
-        // Coba putar audio
-        audio.play().then(() => {
-            isAudioPlaying = true;
-            $audioToggle.text('🎵').removeClass('muted');
-        }).catch(error => {
-            // Jika browser memblokir
-            console.log("Audio play blocked. User must interact to enable sound.", error);
-            isAudioPlaying = false;
-            $audioToggle.text('🔇').addClass('muted');
-        });
-    });
-
-    // Event Klik Tombol Audio Toggle
-    $audioToggle.on('click', function() {
-        if (isAudioPlaying) {
-            audio.pause();
-            isAudioPlaying = false;
-            $(this).text('🔇').addClass('muted');
-        } else {
-            audio.play().then(() => {
-                isAudioPlaying = true;
-                $(this).text('🎵').removeClass('muted');
-            }).catch(error => {
-                console.error("Gagal memutar audio:", error);
-                alert("Gagal memutar audio. Pastikan file 'audio/audio.mp3' tersedia.");
-            });
-        }
-    });
-
-    // ============================================
-    // 3. NAVIGATION SYSTEM (Unobtrusive & Clean)
-    // ============================================
-    
-    const dalemnya_kontener = document.querySelector('.dalemnya_kontener');
-    const sections = document.querySelectorAll('.dalemnya_halaman');
-    const menuToggleBtn = document.getElementById('menu-toggle-btn');
-    let isTextAnimated = false; // Flag untuk Anime.js
-
-    // Toggle menu
-    menuToggleBtn.addEventListener('click', function() {
-        dalemnya_kontener.classList.toggle('buka_menu');
-    });
-
-    // Fungsi navigasi utama
-    function PindahKeHalaman(pageIndex) {
-        
-        dalemnya_kontener.classList.remove('buka_menu');
-
-        // Atur kelas 'after' untuk efek tumpukan kartu
+        // Remove all before/after classes and add after for pages beyond current
         sections.forEach((section, i) => {
             section.classList.remove('before', 'after');
-            if (i > pageIndex) {
+            if (i > page) {
                 section.classList.add('after');
             }
         });
         
-        // Panggil animasi teks HANYA saat pindah ke halaman 4 (index 3)
-        if (pageIndex === 3) {
-            animateBirthdayText();
-        }
+        // Update container classes
+        dalemnya_kontener.classList.remove('buka_menu', 'page-halaman1', 'page-halaman2', 'page-halaman3', 'page-halaman4');
+        dalemnya_kontener.classList.add('page-' + window.pages[page]);
     }
     
-    // Pasang Event Listener ke setiap SECTION (mengganti onclick inline)
-    sections.forEach((section) => {
-        section.addEventListener('click', function() {
-            const pageIndex = parseInt(section.dataset.pageIndex); 
-            PindahKeHalaman(pageIndex);
+    // ============================================
+    // 3. DATE DISPLAY (STATIC)
+    // ============================================
+    
+    const waktuElement = document.getElementById("waktu");
+    if (waktuElement) {
+        waktuElement.innerHTML = formatAMPM();
+    }
+    
+    function formatAMPM() {
+        // Static birthday date
+        return '<div class="ml1"><span class="text-wrapper"><span class="line line1"></span><span class="letters">Rabu, 10 Desember 2025</span><span class="line line2"></span></span></div><p class="ml2">Hari Ulang Tahun Ayla!</p>';
+    }
+
+    // ============================================
+    // 4. AUDIO & FADE EFFECTS (jQuery)
+    // ============================================
+    
+    if (typeof jQuery !== 'undefined') {
+        $(document).ready(function () {
+            // Initialize audio
+            var audio = new Audio('audio/audio.mp3');
+            
+            // Button click event
+            $("#tombol").click(function () {
+                $("#kontener2").fadeOut(800);
+                $("#kontener").fadeIn(1500);
+                
+                // Play audio
+                audio.play().catch(function(error) {
+                    console.log("Audio play failed:", error);
+                });
+            });
         });
-    });
-
-    // ============================================
-    // 4. ANIME.JS TEXT ANIMATIONS (Pemicuan Terkontrol)
-    // ============================================
-    
-    function formatBirthdayText() {
-        // HTML untuk tanggal dan subjudul (pastikan encoding file JS UTF-8 agar emoji terbaca!)
-        return '<div class="ml1"><span class="text-wrapper"><span class="line line1"></span><span class="letters">Rabu, 10 Desember 2025</span><span class="line line2"></span></span></div><p class="ml2">🎉 Hari Ulang Tahun Ayla! 🎉</p>';
     }
 
-    function animateBirthdayText() {
-        if (isTextAnimated) return; // Keluar jika sudah pernah dianimasikan
-
-        // Inject HTML Teks
-        const waktuElement = document.getElementById("waktu");
-        if (waktuElement) {
-            waktuElement.innerHTML = formatBirthdayText();
-        } else {
-            return;
-        }
+    // ============================================
+    // 5. ANIME.JS TEXT ANIMATIONS
+    // ============================================
+    
+    window.onload = function() {
         
-        // Animasi ml1 (Tanggal)
+        // Animation for ml1 (Date text)
         var textWrapper1 = document.querySelector('.ml1 .letters');
         if (textWrapper1) {
+            // Wrap each character in a span
             textWrapper1.innerHTML = textWrapper1.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-            
+
             anime.timeline({ loop: false })
                 .add({
                     targets: '.ml1 .letter',
@@ -153,20 +115,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     opacity: [0.5, 1],
                     easing: "easeOutExpo",
                     duration: 700,
-                    offset: '-=800',
+                    offset: '-=875',
                     delay: (el, i, l) => 80 * (l - i)
                 })
                 .add({
                     targets: '.ml1',
                     opacity: 1,
                     duration: 1000,
-                    easing: "easeOutExpo"
+                    easing: "easeOutExpo",
+                    delay: 1000
                 });
         }
 
-        // Animasi ml2 (Subtitle)
+        // Animation for ml2 (Subtitle text)
         var textWrapper2 = document.querySelector('.ml2');
         if (textWrapper2) {
+            // Wrap each character in a span
             textWrapper2.innerHTML = textWrapper2.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
             anime.timeline({ loop: false })
@@ -177,21 +141,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     translateZ: 0,
                     easing: "easeOutExpo",
                     duration: 950,
-                    delay: (el, i) => 100 * i + 1500 // Delay agar berjalan setelah ml1 selesai
+                    delay: 1400
                 })
                 .add({
                     targets: '.ml2',
                     opacity: 1,
                     duration: 1000,
-                    easing: "easeOutExpo"
+                    easing: "easeOutExpo",
+                    delay: 1000
                 });
         }
-        
-        isTextAnimated = true; 
     }
-
-    // ============================================
-    // 5. CONSOLE MESSAGE
-    // ============================================
-    console.log('%c💖 Happy Birthday Ayla Rahma Dianty! 💖', 'color: #e73c7e; font-size: 20px; font-weight: bold;');
 });
+
+// ============================================
+// 6. CONSOLE MESSAGE (Optional Easter Egg)
+// ============================================
+
+console.log('%c💖 Happy Birthday Ayla Rahma Dianty! 💖', 'color: #e73c7e; font-size: 20px; font-weight: bold;');
+console.log('%cMade with love ❤️', 'color: #666; font-size: 14px;');
