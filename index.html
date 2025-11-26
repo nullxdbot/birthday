@@ -14,6 +14,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
 <body>
+  <!-- Audio Element -->
+  <audio id="birthdayAudio" preload="auto">
+    <source src="audio/audio.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <!-- Particles -->
   <div class="particles" id="particles"></div>
   <div class="sparkles" id="sparkles"></div>
@@ -44,70 +50,113 @@
           <span></span>
         </div>
         <h1 class="header-title">I Love You ❤️</h1>
+        <div class="header-spacer"></div>
+      </div>
+
+      <!-- Menu Navigation -->
+      <div class="menu-sidebar" id="menuSidebar">
+        <div class="menu-item active" data-page="0">
+          <span class="menu-icon">🎉</span>
+          <span class="menu-label">Ayla</span>
+        </div>
+        <div class="menu-item" data-page="1">
+          <span class="menu-icon">💕</span>
+          <span class="menu-label">Aku</span>
+        </div>
+        <div class="menu-item" data-page="2">
+          <span class="menu-icon">💗</span>
+          <span class="menu-label">Sayang</span>
+        </div>
+        <div class="menu-item" data-page="3">
+          <span class="menu-icon">🌟</span>
+          <span class="menu-label">Kamu</span>
+        </div>
       </div>
 
       <!-- Pages Container -->
       <div class="pages-container">
-        <!-- Page 1 - Birthday (HALAMAN PERTAMA) -->
-        <div class="page birthday-page" data-page="0">
-          <h2 class="page-title">Ayla Rahma Dianty 🎉</h2>
-          
-          <div class="date-display">
-            <div class="date-text" id="dateText">Rabu, 10 Desember 2025</div>
-            <div class="date-subtitle">Hari Ulang Tahun Ayla!</div>
-          </div>
+        <!-- Page 1 - Birthday -->
+        <div class="page birthday-page active" data-page="0">
+          <div class="page-content">
+            <h2 class="page-title">Ayla Rahma Dianty 🎉</h2>
+            
+            <div class="date-display">
+              <div class="date-text" id="dateText">Rabu, 10 Desember 2025</div>
+              <div class="date-subtitle">Hari Ulang Tahun Ayla!</div>
+            </div>
 
-          <div class="birthday-message">
-            <h3 class="birthday-title">Happy Birthday, My Love! 🎂</h3>
-            <p class="birthday-text">
-              Hi Ayla, this is your special day and I want to say some things; 
-              All of these years, I'm so grateful to have known you. Nothing can make my day infinitely better than you. 
-              But I hope you know that you're always enough. I hope you live your life freely, joyfully, and peacefully. 
-              No one in the world deserves a bad life, including you. 
-              You deserve all the happiness in the world! ❤️🎂✨
-            </p>
-          </div>
+            <div class="birthday-message">
+              <h3 class="birthday-title">Happy Birthday, My Love! 🎂</h3>
+              <p class="birthday-text">
+                Hi Ayla, this is your special day and I want to say some things; 
+                All of these years, I'm so grateful to have known you. Nothing can make my day infinitely better than you. 
+                But I hope you know that you're always enough. I hope you live your life freely, joyfully, and peacefully. 
+                No one in the world deserves a bad life, including you. 
+                You deserve all the happiness in the world! ❤️🎂✨
+              </p>
+            </div>
 
-          <div class="gift-section">
-            <p class="gift-title">🎁 Ada hadiah kejutan spesial untukmu! 🎁</p>
-            <a href="GANTI_DENGAN_LINK_DANA_KAGET_ANDA" class="gift-button" target="_blank">
-              💝 Kado Spesial Ulang Tahun! 💝
-            </a>
+            <div class="gift-section">
+              <p class="gift-title">🎁 Ada hadiah kejutan spesial untukmu! 🎁</p>
+              <a href="GANTI_DENGAN_LINK_DANA_KAGET_ANDA" class="gift-button" target="_blank">
+                💝 Kado Spesial Ulang Tahun! 💝
+              </a>
+            </div>
           </div>
         </div>
 
         <!-- Page 2 - Aku -->
-        <div class="page after" data-page="1">
-          <h2 class="page-title">Aku 💕</h2>
-          <img src="gambar/gambar1.jpg" alt="Love" class="page-image">
-          <div class="message-box">
-            <p class="message-text">
-              Ayla, kamu adalah <strong>rumah</strong> yang selalu kurindukan. Tempat di mana hatiku menemukan kedamaian dan segala kekuranganku terasa sempurna. Bersamamu, aku merasa lengkap. 🏡💖
-            </p>
+        <div class="page" data-page="1">
+          <div class="page-content">
+            <h2 class="page-title">Aku 💕</h2>
+            <div class="image-container">
+              <img src="gambar/gambar1.jpg" alt="Love" class="page-image">
+            </div>
+            <div class="message-box">
+              <p class="message-text">
+                Ayla, kamu adalah <strong>rumah</strong> yang selalu kurindukan. Tempat di mana hatiku menemukan kedamaian dan segala kekuranganku terasa sempurna. Bersamamu, aku merasa lengkap. 🏡💖
+              </p>
+            </div>
           </div>
         </div>
 
         <!-- Page 3 - Sayang -->
-        <div class="page after" data-page="2">
-          <h2 class="page-title">Sayang 💗</h2>
-          <img src="gambar/gambar2.jpg" alt="Love" class="page-image">
-          <div class="message-box">
-            <p class="message-text">
-              Menyayangi Ayla adalah keputusan terbaik yang pernah kuambil. Melihat senyummu sudah cukup untuk menerangi seluruh hariku. Kamu adalah alasan aku tersenyum setiap hari. 😊✨
-            </p>
+        <div class="page" data-page="2">
+          <div class="page-content">
+            <h2 class="page-title">Sayang 💗</h2>
+            <div class="image-container">
+              <img src="gambar/gambar2.jpg" alt="Love" class="page-image">
+            </div>
+            <div class="message-box">
+              <p class="message-text">
+                Menyayangi Ayla adalah keputusan terbaik yang pernah kuambil. Melihat senyummu sudah cukup untuk menerangi seluruh hariku. Kamu adalah alasan aku tersenyum setiap hari. 😊✨
+              </p>
+            </div>
           </div>
         </div>
 
         <!-- Page 4 - Kamu -->
-        <div class="page after" data-page="3">
-          <h2 class="page-title">Kamu 🌟</h2>
-          <img src="gambar/gambar3.jpg" alt="Love" class="page-image">
-          <div class="message-box">
-            <p class="message-text">
-              Di mataku, Ayla bukan hanya belahan jiwa, tapi juga <strong>motivasi</strong> terbesar dalam hidupku. Bersamamu, aku siap menghadapi apa pun yang terjadi. Kamu kekuatanku! 💪❤️
-            </p>
+        <div class="page" data-page="3">
+          <div class="page-content">
+            <h2 class="page-title">Kamu 🌟</h2>
+            <div class="image-container">
+              <img src="gambar/gambar3.jpg" alt="Love" class="page-image">
+            </div>
+            <div class="message-box">
+              <p class="message-text">
+                Di mataku, Ayla bukan hanya belahan jiwa, tapi juga <strong>motivasi</strong> terbesar dalam hidupku. Bersamamu, aku siap menghadapi apa pun yang terjadi. Kamu kekuatanku! 💪❤️
+              </p>
+            </div>
           </div>
         </div>
+      </div>
+
+      <!-- Page Indicator Dots -->
+      <div class="page-dots">
+        <span class="dot active" data-page="0"></span>
+        <span class="dot" data-page="1"></span>
+        <span class="dot" data-page="2"></span>
+        <span class="dot" data-page="3"></span>
       </div>
     </div>
   </div>

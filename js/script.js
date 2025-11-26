@@ -1,6 +1,8 @@
-// script.js - Enhanced Version
+// script.js - Enhanced Version with Improved Navigation
 
 document.addEventListener('DOMContentLoaded', function() {
+    let currentPage = 0;
+    const totalPages = 4;
     
     // ============================================
     // 1. PARTICLE SYSTEM
@@ -45,13 +47,18 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(createParticle, 1000);
     setInterval(createSparkle, 300);
 
-    // Initial particles
     for (let i = 0; i < 10; i++) {
         setTimeout(createParticle, i * 200);
     }
 
     // ============================================
-    // 3. WELCOME SCREEN TRANSITION
+    // 3. AUDIO ELEMENT
+    // ============================================
+    
+    const birthdayAudio = document.getElementById('birthdayAudio');
+    
+    // ============================================
+    // 4. WELCOME SCREEN TRANSITION
     // ============================================
     
     const openBtn = document.getElementById('openBtn');
@@ -60,18 +67,56 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (openBtn) {
         openBtn.addEventListener('click', function() {
+            if (birthdayAudio) {
+                birthdayAudio.currentTime = 0;
+                birthdayAudio.play().catch(error => {
+                    console.log('Audio playback failed:', error);
+                });
+            }
+            
             welcomeScreen.classList.add('fade-out');
             
             setTimeout(() => {
                 welcomeScreen.style.display = 'none';
                 mainContainer.style.display = 'block';
                 mainContainer.classList.add('fade-in');
+                showPage(0);
             }, 800);
         });
     }
 
     // ============================================
-    // 4. MENU TOGGLE NAVIGATION
+    // 5. PAGE NAVIGATION FUNCTION
+    // ============================================
+    
+    function showPage(pageIndex) {
+        const pages = document.querySelectorAll('.page');
+        const dots = document.querySelectorAll('.page-dots .dot');
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        pages.forEach(page => {
+            page.classList.remove('active', 'prev');
+        });
+        
+        pages[pageIndex].classList.add('active');
+        dots[pageIndex].classList.add('active');
+        dots.forEach((dot, i) => {
+            if (i !== pageIndex) dot.classList.remove('active');
+        });
+        
+        menuItems.forEach((item, i) => {
+            if (i === pageIndex) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+        
+        currentPage = pageIndex;
+    }
+
+    // ============================================
+    // 6. MENU TOGGLE
     // ============================================
     
     const menuToggle = document.getElementById('menuToggle');
@@ -84,48 +129,91 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ============================================
-    // 5. PAGE NAVIGATION
+    // 7. MENU ITEMS CLICK
     // ============================================
     
-    const pages = document.querySelectorAll('.page');
-    
-    pages.forEach((page, index) => {
-        page.addEventListener('click', function() {
-            if (contentWrapper && contentWrapper.classList.contains('menu-open')) {
-                navigateToPage(index);
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const pageIndex = parseInt(this.dataset.page);
+            showPage(pageIndex);
+            if (contentWrapper) {
+                contentWrapper.classList.remove('menu-open');
             }
         });
     });
 
-    function navigateToPage(pageIndex) {
-        pages.forEach((page, i) => {
-            page.classList.remove('after');
-            if (i > pageIndex) {
-                page.classList.add('after');
-            }
+    // ============================================
+    // 8. PAGE DOTS CLICK
+    // ============================================
+    
+    const dots = document.querySelectorAll('.page-dots .dot');
+    dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            const pageIndex = parseInt(this.dataset.page);
+            showPage(pageIndex);
         });
+    });
+
+    // ============================================
+    // 9. TOUCH/SWIPE NAVIGATION
+    // ============================================
+    
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    const pagesContainer = document.querySelector('.pages-container');
+    if (pagesContainer) {
+        pagesContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
         
-        if (contentWrapper) {
-            contentWrapper.classList.remove('menu-open');
+        pagesContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+    }
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0 && currentPage < totalPages - 1) {
+                showPage(currentPage + 1);
+            } else if (diff < 0 && currentPage > 0) {
+                showPage(currentPage - 1);
+            }
         }
     }
 
     // ============================================
-    // 6. ANIME.JS TEXT ANIMATIONS (if loaded)
+    // 10. KEYBOARD NAVIGATION
+    // ============================================
+    
+    document.addEventListener('keydown', (e) => {
+        if (mainContainer.style.display !== 'none') {
+            if (e.key === 'ArrowRight' && currentPage < totalPages - 1) {
+                showPage(currentPage + 1);
+            } else if (e.key === 'ArrowLeft' && currentPage > 0) {
+                showPage(currentPage - 1);
+            }
+        }
+    });
+
+    // ============================================
+    // 11. ANIME.JS TEXT ANIMATIONS
     // ============================================
     
     if (typeof anime !== 'undefined') {
-        // Animation for date text
         const dateText = document.getElementById('dateText');
         if (dateText) {
-            // Wrap each character in a span for animation
             const text = dateText.textContent;
             dateText.innerHTML = text.split('').map(char => {
                 if (char === ' ') return '<span class="letter">&nbsp;</span>';
                 return `<span class="letter">${char}</span>`;
             }).join('');
 
-            // Animate when page 4 is visible
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -152,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ============================================
-    // 7. CONSOLE EASTER EGG
+    // 12. CONSOLE EASTER EGG
     // ============================================
     
     console.log('%c💖 Happy Birthday Ayla Rahma Dianty! 💖', 
@@ -161,15 +249,16 @@ document.addEventListener('DOMContentLoaded', function() {
         'color: #666; font-size: 14px; font-style: italic;');
 
     // ============================================
-    // 8. SMOOTH SCROLL FOR PAGES
+    // 13. SMOOTH SCROLL
     // ============================================
     
+    const pages = document.querySelectorAll('.page');
     pages.forEach(page => {
         page.style.scrollBehavior = 'smooth';
     });
 
     // ============================================
-    // 9. PREVENT DOUBLE TAP ZOOM ON MOBILE
+    // 14. PREVENT DOUBLE TAP ZOOM
     // ============================================
     
     let lastTouchEnd = 0;
@@ -181,22 +270,12 @@ document.addEventListener('DOMContentLoaded', function() {
         lastTouchEnd = now;
     }, false);
 
-    // ============================================
-    // 10. LOADING COMPLETE MESSAGE
-    // ============================================
-    
     console.log('%c✨ Website loaded successfully!', 'color: #00d4aa; font-size: 12px;');
 });
 
-// ============================================
-// 11. WINDOW LOAD EVENT
-// ============================================
-
 window.addEventListener('load', function() {
-    // Add loaded class to body for additional animations
     document.body.classList.add('loaded');
     
-    // Log performance
     if (window.performance) {
         const loadTime = window.performance.timing.domContentLoadedEventEnd - 
                         window.performance.timing.navigationStart;
