@@ -42,12 +42,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- 3. LOGIC AUDIO & FADE (Fungsi JQuery Anda) ---
+    // Pastikan Anda memiliki file audio/audio.mp3
     if (typeof jQuery !== 'undefined') {
         $(document).ready(function () {
-            var audio = new Audio('audio/audio.mp3');
+            // Mengganti versi JQuery lama dengan yang baru.
+            var audio = new Audio('audio/audio.mp3'); 
             $("#tombol").click(function () {
                 $("#kontener2").fadeOut();
-                $("#kontener").fadeIn("slow"); // Diubah dari "4000" ke "slow" agar lebih halus dan standar
+                $("#kontener").fadeIn("slow"); 
                 audio.play();
             });
         });

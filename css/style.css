@@ -85,10 +85,10 @@ html {
   position: relative;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  z-index: 10; 
+  z-index: 10;
 }
 
-/* HEADER UTAMA CARD (Fixed di atas) */
+/* HEADER UTAMA CARD (Fixed di atas) - HANYA UNTUK "I Love You" dan "Ayla Rahma Dianty" di Halaman 4 */
 .judul_halaman {
   color: #333333; 
   font-weight: 700;
@@ -96,14 +96,14 @@ html {
   font-family: 'Playfair Display', serif;
   text-align: center;
   margin: 0;
-  line-height: 70px; /* Sesuai file lama */
-  background: #eeeeee; /* Sesuai file lama */
+  line-height: 70px;
+  background: #eeeeee; 
   position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
   z-index: 101; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Tambah shadow agar jelas */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 /* ICON MENU - Perbaikan Simetris */
@@ -146,23 +146,31 @@ html {
   z-index: 1; 
 }
 
-/* STYLE BARU: Judul Konten di Halaman 1, 2, 3 (Agar tidak tumpang tindih) */
+/* STYLE BARU: Judul Konten di Halaman 1, 2, 3 (Agar terlihat dan tidak tumpang tindih) */
 .dalemnya_halaman .judul_section {
     font-family: 'Playfair Display', serif;
     color: #ff6b82; /* Warna pink romantis */
     font-weight: 700;
     font-size: 2em;
-    margin-top: 20px; 
-    margin-bottom: 20px;
+    
+    /* ************************************************** */
+    /* ** PENTING: Jarak atas diperbesar agar tidak tertutup ** */
+    /* ************************************************** */
+    margin-top: 40px; 
+    margin-bottom: 30px; 
+    
     text-align: center;
     line-height: 1.2;
+    z-index: 5; 
+    position: relative; /* Penting untuk z-index */
 }
+
 
 section .gambar {
   border-radius: 10px;
   max-width: 90%;
   height: auto;
-  margin-top: 15px;
+  margin-top: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -171,7 +179,7 @@ section .isiucapan1, .isiucapan2, .isiucapan3, .isiucapan {
   width: 88%; 
   font-weight: 400;
   line-height: 1.6;
-  margin: 15px auto 0 auto; 
+  margin: 25px auto 0 auto; /* Jarak atas diperbesar */
   font-size: 1.05em;
 }
 
@@ -183,14 +191,6 @@ section .isiucapan1, .isiucapan2, .isiucapan3, .isiucapan {
     margin-top: 20px;
     margin-bottom: 10px;
 }
-
-p.hadiah-text {
-  text-align: center; 
-  margin-top: 25px; 
-  font-weight: 600; 
-  color: #f75d5d; /* Sesuai warna di index.html lama */
-}
-
 
 /* Halaman Tabs - Warna Seragam */
 section.halaman1, section.halaman2, section.halaman3, section.halaman4 {
@@ -259,7 +259,7 @@ section.after {
     to { transform: translate(30px, -40px) rotate(10deg); }
 }
 
-/* EFEK TAMBAHAN: HEART BURST (Interaktif) */
+/* EFEK TAMBAHAN: HEART BURST (Interaktif - memerlukan script.js) */
 .heart-burst {
     position: absolute;
     width: 30px;
@@ -291,6 +291,7 @@ section.after {
         opacity: 0;
     }
 }
+
 
 /* Styling Tombol Hadiah Dana */
 .dana-button {
@@ -353,10 +354,6 @@ section.after {
     .dalemnya_halaman {
         padding-top: 60px; 
     }
-    .buka_menu section.halaman1 { -webkit-transform: translateY(60px); }
-    .buka_menu section.halaman2 { -webkit-transform: translateY(120px); }
-    .buka_menu section.halaman3 { -webkit-transform: translateY(180px); }
-    .buka_menu section.halaman4 { -webkit-transform: translateY(240px); }
     .dana-button {
         padding: 12px 25px;
         font-size: 0.9em;
