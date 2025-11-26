@@ -2,6 +2,7 @@
 /*Instagram : https://instagram.com/null.xd_*/
 /*Website   : https://tako.id/nullxd*/
 
+/* Style untuk Tanggal (Rabu, 10 Desember 2025) */
 .ml1 {
     /* Padding di atas konten tanggal */
     padding-top: 15px; 
@@ -11,7 +12,6 @@
     /* Ukuran font disesuaikan agar muat di layar kecil */
     font-size: 1.4em; 
 }
-
 
 .ml1 .letter {
     display: inline-block;
@@ -34,7 +34,7 @@
     left: 0;
     height: 3px;
     width: 100%;
-    background-color: #ff6b82; 
+    background-color: #ff6b82; /* Warna pink/merah muda */
     transform-origin: 0 0;
 }
 
@@ -46,15 +46,25 @@
     bottom: 0;
 }
 
+/* Style untuk Subteks (Hari Ulang Tahun Ayla Rahma Dianty!) */
 .ml2 {
-    color: #555555;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
+    color: #ff6b82; /* Warna pink/merah muda */
+    font-weight: 500;
     font-size: 1.1em;
-    margin-bottom: 20px;
+    padding-top: 5px;
 }
 
 .ml2 .letter {
     display: inline-block;
     line-height: 1em;
+}
+
+/* Responsifitas khusus teks (untuk layar HP) */
+@media (max-width: 768px) {
+    .ml1 {
+        font-size: 1.2em;
+    }
+    .ml2 {
+        font-size: 0.9em;
+    }
 }
