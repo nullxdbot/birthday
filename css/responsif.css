@@ -1,0 +1,27 @@
+/* responsif.css */
+/* Untuk mengatur tampilan pada layar kecil (HP) */
+
+@media (max-width: 768px) {
+    
+    /* Ukuran Teks Layar Depan */
+    .kontener2 h1 {
+        font-size: 2em;
+    }
+    
+    /* Ukuran Header Tetap (I Love You / Araichyy) */
+    .judul_halaman {
+        font-size: 1.5rem;
+    }
+    
+    /* Ukuran Judul Halaman Konten (Aku, Sayang, Kamu) */
+    .dalemnya_halaman .judul_section {
+        font-size: 1.8em; 
+        margin-top: 20px; /* Jarak disesuaikan untuk layar kecil */
+    }
+    
+    /* Gambar menyesuaikan layar kecil */
+    section .gambar {
+        max-width: 90%;
+        height: auto;
+    }
+}

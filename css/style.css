@@ -10,7 +10,6 @@ body,
 html {
   -webkit-tap-highlight-color: transparent;
   height: 100%;
-  /* Soft Gradient Background */
   background: linear-gradient(-45deg, #fcefee, #fcf4f7, #f7f1f7, #f3f0f7); 
   background-size: 400% 400%;
   animation: animasiBegron 15s ease infinite;
@@ -28,40 +27,35 @@ html {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Centering absolut */
+  transform: translate(-50%, -50%); 
   width: 90%;
   max-width: 400px;
 }
-
 .kontener2 h1 {
   color: #333333; 
   font-family: 'Playfair Display', serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
+  font-size: 2.8em; 
+  margin-bottom: 10px;
 }
-
 .kontener2 p {
-    color: #555;
-    margin-bottom: 30px;
-    font-size: 1.1em;
+  color: #666; 
+  font-size: 1.1em;
+  margin-bottom: 30px;
 }
-
 .kontener2 .tombol {
-  padding: 12px 30px;
-  background: linear-gradient(45deg, #ff8c94, #ff6b82); 
+  background: linear-gradient(45deg, #ff6b82, #ff8c94);
   color: white;
-  outline: none;
   border: none;
-  border-radius: 50px;
+  padding: 15px 30px;
+  font-size: 1.2em;
   font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-  box-shadow: 0 5px 15px rgba(255, 107, 130, 0.4);
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(255, 107, 130, 0.4);
   transition: all 0.3s ease;
 }
-
 .kontener2 .tombol:hover {
   cursor: pointer;
-  background: linear-gradient(45deg, #ff6b82, #ff8c94);
+  background: linear-gradient(45deg, #ff576b, #ff7a87);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(255, 107, 130, 0.6);
 }
@@ -70,7 +64,7 @@ html {
 .kontener {
   padding: 20px;
   height: 100%;
-  display: none; 
+  /* display: none; -> Dipindahkan ke buciners.css */
 }
 
 /* Container Utama (Card Putih) */
@@ -80,7 +74,7 @@ html {
   width: 100%;
   max-width: 600px;
   height: 94%;
-  margin: 0 auto; /* Centering Card */
+  margin: 0 auto; 
   overflow: hidden;
   position: relative;
   border-radius: 15px;
@@ -88,7 +82,7 @@ html {
   z-index: 10;
 }
 
-/* HEADER UTAMA CARD (Fixed di atas) - HANYA UNTUK "I Love You" dan "Ayla Rahma Dianty" di Halaman 4 */
+/* HEADER UTAMA CARD (Fixed di atas) */
 .judul_halaman {
   color: #333333; 
   font-weight: 700;
@@ -106,7 +100,7 @@ html {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* ICON MENU - Perbaikan Simetris */
+/* ICON MENU */
 .tombol_menu {
   position: absolute;
   z-index: 102; 
@@ -146,157 +140,94 @@ html {
   z-index: 1; 
 }
 
-/* STYLE BARU: Judul Konten di Halaman 1, 2, 3 (Agar terlihat dan tidak tumpang tindih) */
+/* WAJIB: Style Judul Konten (Aku, Sayang, Kamu) agar tidak tertutup */
 .dalemnya_halaman .judul_section {
-    font-family: 'Playfair Display', serif;
-    color: #ff6b82; /* Warna pink romantis */
-    font-weight: 700;
-    font-size: 2em;
-    
-    /* ************************************************** */
-    /* ** PENTING: Jarak atas diperbesar agar tidak tertutup ** */
-    /* ************************************************** */
-    margin-top: 40px; 
-    margin-bottom: 30px; 
-    
-    text-align: center;
-    line-height: 1.2;
-    z-index: 5; 
-    position: relative; /* Penting untuk z-index */
-}
-
-
-section .gambar {
-  border-radius: 10px;
-  max-width: 90%;
-  height: auto;
-  margin-top: 5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-section .isiucapan1, .isiucapan2, .isiucapan3, .isiucapan {
-  color: #555555;
-  width: 88%; 
-  font-weight: 400;
-  line-height: 1.6;
-  margin: 25px auto 0 auto; /* Jarak atas diperbesar */
-  font-size: 1.05em;
-}
-
-.ucapan-wrapper h1.ucapan {
     font-family: 'Playfair Display', serif;
     color: #ff6b82; 
     font-weight: 700;
     font-size: 2em;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 40px; /* Jarak yang cukup dari header */
+    margin-bottom: 30px; 
+    text-align: center;
+    line-height: 1.2;
+    z-index: 5; 
+    position: relative; 
 }
 
-/* Halaman Tabs - Warna Seragam */
-section.halaman1, section.halaman2, section.halaman3, section.halaman4 {
-  background: #ffffff; 
-}
-section.halaman4 {
-    background: #fff8f8; 
-    padding-bottom: 100px;
+/* Style Gambar */
+section .gambar {
+  max-width: 80%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
-/* Transisi menu */
-section.after {
-  -webkit-transform: translateY(100%);
+/* Style Ucapan */
+.ucapan1, .ucapan2, .ucapan3 {
+  margin-top: 30px;
+  padding: 0 10px;
+  text-align: center;
 }
-.buka_menu section.halaman1 { -webkit-transform: translateY(70px); -webkit-transition-delay: 0.15s; }
-.buka_menu section.halaman2 { -webkit-transform: translateY(140px); -webkit-transition-delay: 0.1s; }
-.buka_menu section.halaman3 { -webkit-transform: translateY(210px); -webkit-transition-delay: 0.05s; }
-.buka_menu section.halaman4 { -webkit-transform: translateY(280px); -webkit-transition-delay: 0s; }
+.isiucapan1, .isiucapan2, .isiucapan3 {
+  font-weight: 400;
+  line-height: 1.7;
+  color: #666;
+  max-width: 450px;
+  margin: 0 auto;
+}
 
+/* Navigasi Slide */
+.dalemnya_kontener.page-halaman1 .halaman1 {
+  -webkit-transform: translateX(0);
+}
+.dalemnya_kontener.page-halaman2 .halaman2 {
+  -webkit-transform: translateX(0);
+}
+.dalemnya_kontener.page-halaman3 .halaman3 {
+  -webkit-transform: translateX(0);
+}
+.dalemnya_kontener.page-halaman4 .halaman4 {
+  -webkit-transform: translateX(0);
+}
 
+.halaman1.after {
+  -webkit-transform: translateX(100%);
+  -webkit-transition-delay: 0s;
+}
+.halaman2.before {
+  -webkit-transform: translateX(-100%);
+  -webkit-transition-delay: 0s;
+}
+.halaman2.after {
+  -webkit-transform: translateX(100%);
+  -webkit-transition-delay: 0s;
+}
+.halaman3.before {
+  -webkit-transform: translateX(-100%);
+  -webkit-transition-delay: 0s;
+}
+.halaman3.after {
+  -webkit-transform: translateX(100%);
+  -webkit-transition-delay: 0s;
+}
+.halaman4.before {
+  -webkit-transform: translateX(-100%);
+  -webkit-transition-delay: 0s;
+}
+
+/* Animasi Bekgron */
 @keyframes animasiBegron {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* EFEK TAMBAHAN: BACKGROUND FLOATING HEARTS */
-.background-hearts {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0; 
-    pointer-events: none;
-}
-
-.background-hearts::before, .background-hearts::after {
-    content: '💖'; 
-    position: absolute;
-    font-size: 2.5em;
-    opacity: 0.2; 
-    animation: floating 18s infinite alternate ease-in-out;
-}
-
-.background-hearts::before {
-    top: 15%;
-    left: 8%;
-    animation-delay: 0s;
-    font-size: 2em;
-}
-
-.background-hearts::after {
-    bottom: 10%;
-    right: 5%;
-    content: '🌹'; 
-    font-size: 3em;
-    animation-delay: 6s;
-    animation-duration: 25s;
-    opacity: 0.15;
-}
-
-@keyframes floating {
-    from { transform: translate(0, 0) rotate(0deg); }
-    to { transform: translate(30px, -40px) rotate(10deg); }
-}
-
-/* EFEK TAMBAHAN: HEART BURST (Interaktif - memerlukan script.js) */
-.heart-burst {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: transparent;
-    pointer-events: none;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-}
-
-.heart-burst::before {
-    content: '❤️'; 
-    position: absolute;
-    font-size: 20px;
-    opacity: 0;
-    animation: heartFadeOut 0.5s forwards;
-    animation-delay: 0.1s;
-}
-
-@keyframes heartFadeOut {
-    0% {
-        transform: scale(0.8) translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0) translateY(-20px);
-        opacity: 0;
-    }
-}
-
 
 /* Styling Tombol Hadiah Dana */
 .dana-button {
     display: inline-block;
-    background: #00d4aa; /* Warna hijau khas Dana */
+    background: #00d4aa; 
     color: white;
     padding: 15px 30px;
     border-radius: 50px;
@@ -309,53 +240,54 @@ section.after {
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 212, 170, 0.4);
 }
-
 .dana-button:hover {
     transform: scale(1.05);
 }
 
-/* Responsifitas */
-@media (max-width: 768px) {
-    .kontener2 h1 {
-        font-size: 2em;
-    }
-    .judul_halaman {
-        font-size: 1.5rem;
-    }
-    .dalemnya_halaman .judul_section {
-        font-size: 1.8em;
-    }
-    section .gambar {
-        max-width: 95%;
-    }
-    .ml1 {
-        font-size: 1.2em;
-    }
-    .ml2 {
-        font-size: 1em;
-    }
+/* --- EFEK HEART BURST (DIPANGGIL DARI script.js) --- */
+.heart-burst {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    pointer-events: none;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    animation: heartFadeOut 0.5s ease-out forwards;
 }
 
-@media (max-width: 480px) {
-    .kontener2 h1 {
-        font-size: 1.8em;
-    }
-    .kontener2 .tombol {
-        padding: 10px 20px;
-        font-size: 0.9em;
-    }
-    .judul_halaman {
-        font-size: 1.4rem;
-        line-height: 60px; 
-    }
-    .tombol_menu {
-        height: 60px; 
-    }
-    .dalemnya_halaman {
-        padding-top: 60px; 
-    }
-    .dana-button {
-        padding: 12px 25px;
-        font-size: 0.9em;
-    }
+.heart-burst::before, .heart-burst::after {
+    content: '💖'; /* Atau gunakan simbol '❤️' atau '✨' */
+    position: absolute;
+    font-size: 1.5em; 
+    opacity: 0;
+    animation: heartFly 0.5s ease-out forwards;
+}
+
+.heart-burst::before {
+    transform: translate(-10px, -10px) rotate(20deg);
+}
+
+.heart-burst::after {
+    transform: translate(10px, 10px) rotate(-20deg);
+    animation-delay: 0.1s;
+}
+
+@keyframes heartFly {
+    0% { transform: translate(0, 0) scale(0); opacity: 0; }
+    50% { transform: translate(var(--tx, 0), var(--ty, 0)) scale(1); opacity: 1; }
+    100% { transform: translate(var(--tx, 0), var(--ty, 0)) scale(0.5); opacity: 0; }
+}
+
+/* Override positions for heart burst */
+.heart-burst::before {
+    --tx: -15px; --ty: -15px;
+}
+.heart-burst::after {
+    --tx: 15px; --ty: 15px;
+}
+
+@keyframes heartFadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }

@@ -5,8 +5,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // --- 1. LOGIC APLIKASI UTAMA (Navigasi) ---
-
-    // Deklarasi Global untuk Navigation
     window.pages = new Array('halaman1', 'halaman2', 'halaman3', 'halaman4');
 
     window.klikMenu = function() {
@@ -28,34 +26,30 @@ document.addEventListener('DOMContentLoaded', function() {
         dalemnya_kontener.classList.add('page-' + pages[page]);
     }
     
-    // --- 2. LOGIC TANGGAL STATIS (Fungsi formatAMPM Anda) ---
-    
+    // --- 2. LOGIC TANGGAL STATIS ---
     const waktuElement = document.getElementById("waktu");
     if (waktuElement) {
         waktuElement.innerHTML = formatAMPM();
     }
     
-
     function formatAMPM() {
       // Tanggal ulang tahun statis (Rabu, 10 Desember 2025)
-      return '<div class="ml1"><span class="text-wrapper"><span class="line line1"></span><span class="letters">Rabu, 10 Desember 2025</span><span class="line line2"></span></span></div><p class="ml2"> Hari Ulang Tahun Ayla! </p>';
+      return '<div class="ml1"><span class="text-wrapper"><span class="line line1"></span><span class="letters">Rabu, 10 Desember 2025</span><span class="line line2"></span></span></div><p class="ml2"> Hari Ulang Tahun Araichyy! </p>';
     }
 
-    // --- 3. LOGIC AUDIO & FADE (Fungsi JQuery Anda) ---
-    // Pastikan Anda memiliki file audio/audio.mp3
+    // --- 3. LOGIC AUDIO & FADE (Fungsi JQuery) ---
     if (typeof jQuery !== 'undefined') {
         $(document).ready(function () {
-            // Mengganti versi JQuery lama dengan yang baru.
             var audio = new Audio('audio/audio.mp3'); 
             $("#tombol").click(function () {
                 $("#kontener2").fadeOut();
-                $("#kontener").fadeIn("slow"); 
+                $("#kontener").fadeIn('slow'); // FIX: Durasi fade diperbaiki
                 audio.play();
             });
         });
     }
 
-    // --- 4. LOGIC ANIMASI ANIME.JS (Semua anime.timeline Anda) ---
+    // --- 4. LOGIC ANIMASI ANIME.JS ---
 
     window.onload = function() {
         // Anime.js untuk ml1 (Tanggal)
