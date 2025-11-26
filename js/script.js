@@ -1,162 +1,205 @@
+// script.js - Enhanced Version
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // ============================================
-    // 1. FLOATING HEARTS ANIMATION
+    // 1. PARTICLE SYSTEM
     // ============================================
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = '❤️';
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
-        heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+    
+    function createParticle() {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const emojis = ['❤️', '💕', '💖', '💗', '🌸', '🌹', '✨', '⭐', '🎀', '🦋'];
+        particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.fontSize = (Math.random() * 20 + 12) + 'px';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particle.style.animationDelay = Math.random() * 5 + 's';
         
-        const heartsContainer = document.getElementById('hearts');
-        if (heartsContainer) {
-            heartsContainer.appendChild(heart);
-            setTimeout(() => heart.remove(), 10000);
+        const particlesContainer = document.getElementById('particles');
+        if (particlesContainer) {
+            particlesContainer.appendChild(particle);
+            setTimeout(() => particle.remove(), 20000);
         }
     }
 
-    // Create hearts every 800ms
-    setInterval(createHeart, 800);
-
     // ============================================
-    // 2. NAVIGATION SYSTEM
+    // 2. SPARKLE SYSTEM
     // ============================================
     
-    // Global pages array
-    window.pages = ['halaman1', 'halaman2', 'halaman3', 'halaman4'];
-
-    // Toggle menu function
-    window.klikMenu = function() {
-        document.querySelector('.dalemnya_kontener').classList.toggle('buka_menu');
+    function createSparkle() {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 2 + 's';
+        
+        const sparklesContainer = document.getElementById('sparkles');
+        if (sparklesContainer) {
+            sparklesContainer.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 2000);
+        }
     }
 
-    // Navigate to specific page
-    window.PindahKeHalaman = function(page) {
-        const dalemnya_kontener = document.querySelector('.dalemnya_kontener');
-        const sections = document.querySelectorAll('.dalemnya_halaman');
-        
-        // Remove all before/after classes and add after for pages beyond current
-        sections.forEach((section, i) => {
-            section.classList.remove('before', 'after');
-            if (i > page) {
-                section.classList.add('after');
+    // Generate particles and sparkles
+    setInterval(createParticle, 1000);
+    setInterval(createSparkle, 300);
+
+    // Initial particles
+    for (let i = 0; i < 10; i++) {
+        setTimeout(createParticle, i * 200);
+    }
+
+    // ============================================
+    // 3. WELCOME SCREEN TRANSITION
+    // ============================================
+    
+    const openBtn = document.getElementById('openBtn');
+    const welcomeScreen = document.getElementById('welcomeScreen');
+    const mainContainer = document.getElementById('mainContainer');
+    
+    if (openBtn) {
+        openBtn.addEventListener('click', function() {
+            welcomeScreen.classList.add('fade-out');
+            
+            setTimeout(() => {
+                welcomeScreen.style.display = 'none';
+                mainContainer.style.display = 'block';
+                mainContainer.classList.add('fade-in');
+            }, 800);
+        });
+    }
+
+    // ============================================
+    // 4. MENU TOGGLE NAVIGATION
+    // ============================================
+    
+    const menuToggle = document.getElementById('menuToggle');
+    const contentWrapper = document.getElementById('contentWrapper');
+    
+    if (menuToggle && contentWrapper) {
+        menuToggle.addEventListener('click', function() {
+            contentWrapper.classList.toggle('menu-open');
+        });
+    }
+
+    // ============================================
+    // 5. PAGE NAVIGATION
+    // ============================================
+    
+    const pages = document.querySelectorAll('.page');
+    
+    pages.forEach((page, index) => {
+        page.addEventListener('click', function() {
+            if (contentWrapper && contentWrapper.classList.contains('menu-open')) {
+                navigateToPage(index);
+            }
+        });
+    });
+
+    function navigateToPage(pageIndex) {
+        pages.forEach((page, i) => {
+            page.classList.remove('after');
+            if (i > pageIndex) {
+                page.classList.add('after');
             }
         });
         
-        // Update container classes
-        dalemnya_kontener.classList.remove('buka_menu', 'page-halaman1', 'page-halaman2', 'page-halaman3', 'page-halaman4');
-        dalemnya_kontener.classList.add('page-' + window.pages[page]);
-    }
-    
-    // ============================================
-    // 3. DATE DISPLAY (STATIC)
-    // ============================================
-    
-    const waktuElement = document.getElementById("waktu");
-    if (waktuElement) {
-        waktuElement.innerHTML = formatAMPM();
-    }
-    
-    function formatAMPM() {
-        // Static birthday date
-        return '<div class="ml1"><span class="text-wrapper"><span class="line line1"></span><span class="letters">Rabu, 10 Desember 2025</span><span class="line line2"></span></span></div><p class="ml2">Hari Ulang Tahun Ayla!</p>';
+        if (contentWrapper) {
+            contentWrapper.classList.remove('menu-open');
+        }
     }
 
     // ============================================
-    // 4. AUDIO & FADE EFFECTS (jQuery)
+    // 6. ANIME.JS TEXT ANIMATIONS (if loaded)
     // ============================================
     
-    if (typeof jQuery !== 'undefined') {
-        $(document).ready(function () {
-            // Initialize audio
-            var audio = new Audio('audio/audio.mp3');
-            
-            // Button click event
-            $("#tombol").click(function () {
-                $("#kontener2").fadeOut(800);
-                $("#kontener").fadeIn(1500);
-                
-                // Play audio
-                audio.play().catch(function(error) {
-                    console.log("Audio play failed:", error);
+    if (typeof anime !== 'undefined') {
+        // Animation for date text
+        const dateText = document.getElementById('dateText');
+        if (dateText) {
+            // Wrap each character in a span for animation
+            const text = dateText.textContent;
+            dateText.innerHTML = text.split('').map(char => {
+                if (char === ' ') return '<span class="letter">&nbsp;</span>';
+                return `<span class="letter">${char}</span>`;
+            }).join('');
+
+            // Animate when page 4 is visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        anime.timeline({ loop: false })
+                            .add({
+                                targets: '#dateText .letter',
+                                scale: [0.3, 1],
+                                opacity: [0, 1],
+                                translateZ: 0,
+                                easing: "easeOutExpo",
+                                duration: 600,
+                                delay: (el, i) => 50 * (i + 1)
+                            });
+                        observer.disconnect();
+                    }
                 });
             });
-        });
+
+            const birthdayPage = document.querySelector('.birthday-page');
+            if (birthdayPage) {
+                observer.observe(birthdayPage);
+            }
+        }
     }
 
     // ============================================
-    // 5. ANIME.JS TEXT ANIMATIONS
+    // 7. CONSOLE EASTER EGG
     // ============================================
     
-    window.onload = function() {
-        
-        // Animation for ml1 (Date text)
-        var textWrapper1 = document.querySelector('.ml1 .letters');
-        if (textWrapper1) {
-            // Wrap each character in a span
-            textWrapper1.innerHTML = textWrapper1.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+    console.log('%c💖 Happy Birthday Ayla Rahma Dianty! 💖', 
+        'color: #ff6b9d; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);');
+    console.log('%cMade with love and dedication ❤️', 
+        'color: #666; font-size: 14px; font-style: italic;');
 
-            anime.timeline({ loop: false })
-                .add({
-                    targets: '.ml1 .letter',
-                    scale: [0.3, 1],
-                    opacity: [0, 1],
-                    translateZ: 0,
-                    easing: "easeOutExpo",
-                    duration: 600,
-                    delay: (el, i) => 70 * (i + 1)
-                })
-                .add({
-                    targets: '.ml1 .line',
-                    scaleX: [0, 1],
-                    opacity: [0.5, 1],
-                    easing: "easeOutExpo",
-                    duration: 700,
-                    offset: '-=875',
-                    delay: (el, i, l) => 80 * (l - i)
-                })
-                .add({
-                    targets: '.ml1',
-                    opacity: 1,
-                    duration: 1000,
-                    easing: "easeOutExpo",
-                    delay: 1000
-                });
+    // ============================================
+    // 8. SMOOTH SCROLL FOR PAGES
+    // ============================================
+    
+    pages.forEach(page => {
+        page.style.scrollBehavior = 'smooth';
+    });
+
+    // ============================================
+    // 9. PREVENT DOUBLE TAP ZOOM ON MOBILE
+    // ============================================
+    
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(event) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
         }
+        lastTouchEnd = now;
+    }, false);
 
-        // Animation for ml2 (Subtitle text)
-        var textWrapper2 = document.querySelector('.ml2');
-        if (textWrapper2) {
-            // Wrap each character in a span
-            textWrapper2.innerHTML = textWrapper2.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-            anime.timeline({ loop: false })
-                .add({
-                    targets: '.ml2 .letter',
-                    scale: [4, 1],
-                    opacity: [0, 1],
-                    translateZ: 0,
-                    easing: "easeOutExpo",
-                    duration: 950,
-                    delay: 1400
-                })
-                .add({
-                    targets: '.ml2',
-                    opacity: 1,
-                    duration: 1000,
-                    easing: "easeOutExpo",
-                    delay: 1000
-                });
-        }
-    }
+    // ============================================
+    // 10. LOADING COMPLETE MESSAGE
+    // ============================================
+    
+    console.log('%c✨ Website loaded successfully!', 'color: #00d4aa; font-size: 12px;');
 });
 
 // ============================================
-// 6. CONSOLE MESSAGE (Optional Easter Egg)
+// 11. WINDOW LOAD EVENT
 // ============================================
 
-console.log('%c💖 Happy Birthday Ayla Rahma Dianty! 💖', 'color: #e73c7e; font-size: 20px; font-weight: bold;');
-console.log('%cMade with love ❤️', 'color: #666; font-size: 14px;');
+window.addEventListener('load', function() {
+    // Add loaded class to body for additional animations
+    document.body.classList.add('loaded');
+    
+    // Log performance
+    if (window.performance) {
+        const loadTime = window.performance.timing.domContentLoadedEventEnd - 
+                        window.performance.timing.navigationStart;
+        console.log(`%cPage loaded in ${loadTime}ms`, 'color: #666; font-size: 11px;');
+    }
+});

@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+/* style.css - Enhanced Version */
 
 * {
   margin: 0;
@@ -9,367 +7,535 @@
 }
 
 body, html {
-  -webkit-tap-highlight-color: transparent;
   height: 100%;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-  width: 100%;
-  overflow-y: hidden;
   font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #a18cd1);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
+  -webkit-tap-highlight-color: transparent;
 }
 
-@keyframes gradientBG {
+@keyframes gradientFlow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Floating Hearts Animation */
-.hearts {
+/* ========================================
+   PARTICLE EFFECTS
+======================================== */
+
+.particles {
   position: fixed;
   width: 100%;
   height: 100%;
   pointer-events: none;
   z-index: 1;
+  overflow: hidden;
 }
 
-.heart {
+.particle {
   position: absolute;
-  font-size: 20px;
-  animation: float 10s linear infinite;
+  animation: float-particle 15s linear infinite;
   opacity: 0;
 }
 
-@keyframes float {
+@keyframes float-particle {
   0% {
     transform: translateY(100vh) rotate(0deg);
     opacity: 0;
   }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
   100% {
-    transform: translateY(-100vh) rotate(360deg);
+    transform: translateY(-100vh) rotate(720deg);
     opacity: 0;
   }
 }
 
-/* Kontener Awal */
-.kontener2 {
-  padding: 20px;
-  text-align: center;
+/* Sparkles Effect */
+.sparkles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.sparkle {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 450px;
-  z-index: 10;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  animation: sparkle-twinkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* ========================================
+   WELCOME SCREEN
+======================================== */
+
+.welcome-screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.welcome-card {
   background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   border-radius: 30px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  padding: 40px 30px;
-}
-
-.kontener2 h1 {
-  color: #e73c7e;
-  font-family: 'Dancing Script', cursive;
-  font-size: 2.8em;
-  margin-bottom: 15px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  animation: bounce 2s ease infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.kontener2 p {
-  color: #555;
-  margin-bottom: 30px;
-  font-size: 1.1em;
-  line-height: 1.6;
-}
-
-.kontener2 .tombol {
-  padding: 15px 40px;
-  background: linear-gradient(135deg, #e73c7e, #ee7752);
-  color: white;
-  outline: none;
-  border: none;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1.1em;
-  font-family: 'Poppins', sans-serif;
-  box-shadow: 0 8px 25px rgba(231, 60, 126, 0.4);
-  transition: all 0.3s ease;
-  cursor: pointer;
+  padding: 50px 40px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   position: relative;
   overflow: hidden;
 }
 
-.kontener2 .tombol:before {
+.welcome-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 182, 193, 0.3) 0%, transparent 70%);
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.welcome-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cake-icon {
+  font-size: 4em;
+  margin-bottom: 20px;
+  animation: cake-bounce 2s ease-in-out infinite;
+}
+
+@keyframes cake-bounce {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  25% { transform: translateY(-15px) rotate(5deg); }
+  75% { transform: translateY(-10px) rotate(-3deg); }
+}
+
+.welcome-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3em;
+  color: #ff6b9d;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  line-height: 1.2;
+}
+
+.welcome-name {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2em;
+  color: #c44569;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.welcome-text {
+  color: #666;
+  font-size: 1.05em;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+.open-button {
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  color: white;
+  border: none;
+  padding: 18px 45px;
+  border-radius: 50px;
+  font-size: 1.15em;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 15px 35px rgba(196, 69, 105, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.open-button::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   width: 0;
   height: 0;
-  border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
   transform: translate(-50%, -50%);
   transition: width 0.6s, height 0.6s;
 }
 
-.kontener2 .tombol:hover:before {
-  width: 300px;
-  height: 300px;
+.open-button:hover::before {
+  width: 400px;
+  height: 400px;
 }
 
-.kontener2 .tombol:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(231, 60, 126, 0.6);
+.open-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 50px rgba(196, 69, 105, 0.6);
 }
 
-/* Kontener Utama */
-.kontener {
-  padding: 20px;
-  height: 100%;
+.open-button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================
+   MAIN CONTAINER
+======================================== */
+
+.main-container {
   display: none;
+  height: 100%;
+  padding: 20px;
+  position: relative;
   z-index: 10;
-  position: relative;
 }
 
-.dalemnya_kontener {
-  text-align: center;
+.content-wrapper {
   background: rgba(255, 255, 255, 0.98);
-  width: 100%;
-  max-width: 650px;
-  height: 94%;
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  max-width: 700px;
+  height: 95%;
   margin: 0 auto;
-  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
   position: relative;
-  border-radius: 25px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
-.judul_halaman {
-  color: #e73c7e;
-  font-weight: 700;
-  font-size: 2rem;
-  font-family: 'Playfair Display', serif;
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+  background: linear-gradient(135deg, #fff5f8, #ffeef5);
+  padding: 25px;
   text-align: center;
-  margin: 0;
-  line-height: 80px;
-  background: linear-gradient(135deg, #ffeef5, #fff5f8);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 101;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-bottom: 3px solid #ff6b9d;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-.tombol_menu {
+.header-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5em;
+  color: #ff6b9d;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.menu-toggle {
   position: absolute;
-  z-index: 102;
-  top: 0;
-  left: 0;
-  height: 80px;
-  width: 60px;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 30px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 15px;
+  justify-content: space-between;
 }
 
-.tombol_menu::before,
-.tombol_menu::after {
-  content: '';
-  display: block;
-  width: 28px;
+.menu-toggle span {
+  width: 100%;
   height: 3px;
-  background: #e73c7e;
-  margin: 4px 0;
-  transition: transform 0.3s ease;
+  background: #ff6b9d;
   border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
-.buka_menu .tombol_menu::before {
-  transform: rotate(45deg) translate(5px, 5px);
+.menu-open .menu-toggle span:nth-child(1) {
+  transform: rotate(45deg) translateY(13px);
 }
 
-.buka_menu .tombol_menu::after {
-  transform: rotate(-45deg) translate(5px, -5px);
+.menu-open .menu-toggle span:nth-child(2) {
+  opacity: 0;
 }
 
-.dalemnya_halaman {
+.menu-open .menu-toggle span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-13px);
+}
+
+/* ========================================
+   PAGES
+======================================== */
+
+.pages-container {
+  height: calc(100% - 90px);
+  position: relative;
+  overflow: hidden;
+}
+
+.page {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 30px 25px;
-  padding-top: 100px;
-  box-sizing: border-box;
+  padding: 40px 30px;
   overflow-y: auto;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(180deg, #ffffff 0%, #fff9fc 100%);
 }
 
-.dalemnya_halaman::-webkit-scrollbar {
+.page::-webkit-scrollbar {
   width: 8px;
 }
 
-.dalemnya_halaman::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.page::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.page::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff6b9d, #c44569);
   border-radius: 10px;
 }
 
-.dalemnya_halaman::-webkit-scrollbar-thumb {
-  background: #e73c7e;
-  border-radius: 10px;
-}
-
-section .gambar {
-  border-radius: 20px;
-  max-width: 85%;
-  height: auto;
-  margin-top: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border: 5px solid #fff;
-  transition: transform 0.3s ease;
-}
-
-section .gambar:hover {
-  transform: scale(1.05);
-}
-
-section .isiucapan1,
-section .isiucapan2,
-section .isiucapan3,
-section .isiucapan {
-  color: #555;
-  width: 90%;
-  font-weight: 400;
-  line-height: 1.8;
-  margin: 20px auto;
-  font-size: 1.05em;
-  background: rgba(255, 240, 245, 0.5);
-  padding: 20px;
-  border-radius: 15px;
-  border-left: 4px solid #e73c7e;
-}
-
-section.halaman1,
-section.halaman2,
-section.halaman3 {
-  background: linear-gradient(180deg, #fff 0%, #fef9fb 100%);
-}
-
-section.halaman4 {
-  background: linear-gradient(180deg, #fff5f8 0%, #ffeef5 100%);
-}
-
-section.after {
-  transform: translateY(100%);
-}
-
-.buka_menu section.halaman1 {
-  transform: translateY(80px);
-  transition-delay: 0.15s;
-}
-
-.buka_menu section.halaman2 {
-  transform: translateY(160px);
-  transition-delay: 0.1s;
-}
-
-.buka_menu section.halaman3 {
-  transform: translateY(240px);
-  transition-delay: 0.05s;
-}
-
-.buka_menu section.halaman4 {
-  transform: translateY(320px);
-  transition-delay: 0s;
-}
-
-.ucapan-wrapper {
-  margin-top: 30px;
-}
-
-.ucapan {
+.page-title {
   font-family: 'Dancing Script', cursive;
-  font-size: 2.2em;
-  color: #e73c7e;
-  margin-bottom: 20px;
+  font-size: 2.3em;
+  color: #ff6b9d;
+  text-align: center;
+  margin-bottom: 30px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Tombol Dana */
-.dana-button {
+.page-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  margin: 0 auto 30px;
+  display: block;
+  border: 5px solid #fff;
+  transition: transform 0.4s ease;
+}
+
+.page-image:hover {
+  transform: scale(1.03) rotate(1deg);
+}
+
+.message-box {
+  background: linear-gradient(135deg, #fff5f8, #ffeef5);
+  padding: 30px;
+  border-radius: 20px;
+  border-left: 5px solid #ff6b9d;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-top: 25px;
+}
+
+.message-text {
+  color: #555;
+  font-size: 1.08em;
+  line-height: 1.9;
+  text-align: justify;
+}
+
+.message-text strong {
+  color: #c44569;
+  font-weight: 600;
+}
+
+/* ========================================
+   BIRTHDAY PAGE SPECIAL
+======================================== */
+
+.birthday-page {
+  background: linear-gradient(180deg, #fff9fc 0%, #ffeef5 100%);
+}
+
+.date-display {
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  color: white;
+  padding: 25px;
+  border-radius: 20px;
+  margin: 30px auto;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(196, 69, 105, 0.3);
+  max-width: 500px;
+}
+
+.date-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.date-subtitle {
+  font-size: 1.15em;
+  font-weight: 300;
+  opacity: 0.95;
+}
+
+.birthday-message {
+  background: white;
+  padding: 35px;
+  border-radius: 25px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  margin: 30px 0;
+}
+
+.birthday-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5em;
+  color: #ff6b9d;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.birthday-text {
+  color: #666;
+  font-size: 1.1em;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.gift-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.gift-title {
+  font-size: 1.3em;
+  color: #ff6b9d;
+  font-weight: 600;
+  margin-bottom: 20px;
+  animation: gift-pulse 2s ease-in-out infinite;
+}
+
+@keyframes gift-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.gift-button {
   display: inline-block;
   background: linear-gradient(135deg, #00d4aa, #00a896);
   color: white;
-  padding: 18px 35px;
+  padding: 20px 40px;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: bold;
-  margin: 25px auto;
-  transition: all 0.3s ease;
-  width: fit-content;
-  text-align: center;
-  box-shadow: 0 8px 25px rgba(0, 212, 170, 0.4);
-  font-size: 1.05em;
-}
-
-.dana-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 35px rgba(0, 212, 170, 0.6);
-}
-
-.gift-text {
-  text-align: center;
-  margin-top: 30px;
   font-weight: 600;
-  color: #e73c7e;
-  font-size: 1.1em;
-  animation: pulse 2s ease infinite;
+  font-size: 1.15em;
+  box-shadow: 0 15px 40px rgba(0, 168, 150, 0.4);
+  transition: all 0.4s ease;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+.gift-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 50px rgba(0, 168, 150, 0.6);
 }
 
-/* Responsive */
+/* ========================================
+   PAGE NAVIGATION STATES
+======================================== */
+
+.page.after {
+  transform: translateY(100%);
+}
+
+.menu-open .page:nth-child(1) {
+  transform: translateY(15%);
+  transition-delay: 0.15s;
+}
+
+.menu-open .page:nth-child(2) {
+  transform: translateY(30%);
+  transition-delay: 0.1s;
+}
+
+.menu-open .page:nth-child(3) {
+  transform: translateY(45%);
+  transition-delay: 0.05s;
+}
+
+.menu-open .page:nth-child(4) {
+  transform: translateY(60%);
+  transition-delay: 0s;
+}
+
+/* ========================================
+   FADE ANIMATIONS
+======================================== */
+
+.fade-out {
+  animation: fadeOut 0.8s ease-out forwards;
+}
+
+.fade-in {
+  animation: fadeIn 1.2s ease-in forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
 @media (max-width: 768px) {
-  .kontener2 h1 { font-size: 2.2em; }
-  .judul_halaman { font-size: 1.7rem; }
-  .ucapan { font-size: 1.8em; }
-  section .gambar { max-width: 90%; }
+  .welcome-title { font-size: 2.5em; }
+  .welcome-name { font-size: 1.9em; }
+  .header-title { font-size: 2em; }
+  .page-title { font-size: 2em; }
+  .date-text { font-size: 1.5em; }
+  .birthday-title { font-size: 2em; }
 }
 
 @media (max-width: 480px) {
-  .kontener2 h1 { font-size: 1.9em; }
-  .kontener2 .tombol {
-    padding: 12px 30px;
-    font-size: 1em;
+  .welcome-card { padding: 40px 30px; }
+  .welcome-title { font-size: 2em; }
+  .welcome-name { font-size: 1.6em; }
+  .open-button { 
+    padding: 15px 35px; 
+    font-size: 1em; 
   }
-  .judul_halaman {
-    font-size: 1.5rem;
-    line-height: 70px;
+  .header { padding: 20px; }
+  .header-title { font-size: 1.7em; }
+  .page { padding: 30px 20px; }
+  .page-title { font-size: 1.8em; }
+  .message-box { padding: 20px; }
+  .birthday-message { padding: 25px; }
+  .date-text { font-size: 1.3em; }
+  .birthday-title { font-size: 1.8em; }
+  .gift-button { 
+    padding: 16px 32px; 
+    font-size: 1em; 
   }
-  .tombol_menu { height: 70px; }
-  .dalemnya_halaman { padding-top: 90px; }
-  .dana-button {
-    padding: 15px 28px;
-    font-size: 0.95em;
-  }
-  section .gambar { max-width: 95%; }
-  .ucapan { font-size: 1.6em; }
 }

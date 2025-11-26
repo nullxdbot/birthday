@@ -2,99 +2,117 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday Ayla Rahma Dianty! 💖</title>
   <meta name="description" content="Selamat Ulang Tahun Sayangku Ayla Rahma Dianty!">
   
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/efekteks.css">
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
-
 <body>
-  <!-- Floating Hearts -->
-  <div class="hearts" id="hearts"></div>
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
+  <div class="sparkles" id="sparkles"></div>
 
-  <!-- Halaman Awal -->
-  <div class="kontener2" id="kontener2">
-    <h1>🎂 Happy Birthday 🎂</h1>
-    <h2 style="color: #e73c7e; font-family: 'Dancing Script', cursive; font-size: 2em; margin: 10px 0;">Ayla Rahma Dianty</h2>
-    <p>Klik tombol di bawah ini untuk kejutan spesial dariku untukmu, Sayang. ❤️</p>
-    <button class="tombol" id="tombol">
-      <span style="position: relative; z-index: 1;">✨ Buka Kejutan ✨</span>
-    </button>
+  <!-- Welcome Screen -->
+  <div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-card">
+      <div class="cake-icon">🎂</div>
+      <h1 class="welcome-title">Happy Birthday</h1>
+      <h2 class="welcome-name">Ayla Rahma Dianty</h2>
+      <p class="welcome-text">
+        Hari ini adalah hari istimewa untukmu, Sayang! Aku telah menyiapkan sesuatu yang special untuk merayakan hari lahirmu. ❤️
+      </p>
+      <button class="open-button" id="openBtn">
+        <span>✨ Buka Kejutan Spesial ✨</span>
+      </button>
+    </div>
   </div>
 
-  <!-- Halaman Utama -->
-  <div class="kontener" id="kontener">
-    <div class="dalemnya_kontener">
-      <h1 class="judul_halaman">I Love You ❤️</h1>
-      <a class="tombol_menu" onclick="klikMenu()"></a>
-
-      <section class="halaman1 dalemnya_halaman" onclick="PindahKeHalaman(0)">
-        <h1 class="judul_halaman">Aku 💕</h1>
-        <br>
-        <img src="gambar/gambar1.jpg" alt="Love" class="gambar">
-        <br>
-        <div class="ucapan1">
-          <p class="isiucapan1">Ayla, kamu adalah <strong>rumah</strong> yang selalu kurindukan. Tempat di mana hatiku menemukan kedamaian dan segala kekuranganku terasa sempurna. Bersamamu, aku merasa lengkap. 🏡💖</p>
+  <!-- Main Container -->
+  <div class="main-container" id="mainContainer">
+    <div class="content-wrapper" id="contentWrapper">
+      <!-- Header -->
+      <div class="header">
+        <div class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-      </section>
+        <h1 class="header-title">I Love You ❤️</h1>
+      </div>
 
-      <section class="halaman2 dalemnya_halaman" onclick="PindahKeHalaman(1)">
-        <h1 class="judul_halaman">Sayang 💗</h1>
-        <br>
-        <img src="gambar/gambar2.jpg" alt="Love" class="gambar">
-        <br>
-        <div class="ucapan2">
-          <p class="isiucapan2">Menyayangi Ayla adalah keputusan terbaik yang pernah kuambil. Melihat senyummu sudah cukup untuk menerangi seluruh hariku. Kamu adalah alasan aku tersenyum setiap hari. 😊✨</p>
+      <!-- Pages Container -->
+      <div class="pages-container">
+        <!-- Page 1 -->
+        <div class="page" data-page="0">
+          <h2 class="page-title">Aku 💕</h2>
+          <img src="gambar/gambar1.jpg" alt="Love" class="page-image">
+          <div class="message-box">
+            <p class="message-text">
+              Ayla, kamu adalah <strong>rumah</strong> yang selalu kurindukan. Tempat di mana hatiku menemukan kedamaian dan segala kekuranganku terasa sempurna. Bersamamu, aku merasa lengkap. 🏡💖
+            </p>
+          </div>
         </div>
-      </section>
 
-      <section class="halaman3 dalemnya_halaman" onclick="PindahKeHalaman(2)">
-        <h1 class="judul_halaman">Kamu 🌟</h1>
-        <br>
-        <img src="gambar/gambar3.jpg" alt="Love" class="gambar">
-        <br>
-        <div class="ucapan3">
-          <p class="isiucapan3">Di mataku, Ayla bukan hanya belahan jiwa, tapi juga <strong>motivasi</strong> terbesar dalam hidupku. Bersamamu, aku siap menghadapi apa pun yang terjadi. Kamu kekuatanku! 💪❤️</p>
+        <!-- Page 2 -->
+        <div class="page after" data-page="1">
+          <h2 class="page-title">Sayang 💗</h2>
+          <img src="gambar/gambar2.jpg" alt="Love" class="page-image">
+          <div class="message-box">
+            <p class="message-text">
+              Menyayangi Ayla adalah keputusan terbaik yang pernah kuambil. Melihat senyummu sudah cukup untuk menerangi seluruh hariku. Kamu adalah alasan aku tersenyum setiap hari. 😊✨
+            </p>
+          </div>
         </div>
-      </section>
 
-      <section class="halaman4 dalemnya_halaman" onclick="PindahKeHalaman(3)">
-        <h1 class="judul_halaman">Ayla Rahma Dianty 🎉</h1>
-        <br>
-        <div id="waktu"></div>
+        <!-- Page 3 -->
+        <div class="page after" data-page="2">
+          <h2 class="page-title">Kamu 🌟</h2>
+          <img src="gambar/gambar3.jpg" alt="Love" class="page-image">
+          <div class="message-box">
+            <p class="message-text">
+              Di mataku, Ayla bukan hanya belahan jiwa, tapi juga <strong>motivasi</strong> terbesar dalam hidupku. Bersamamu, aku siap menghadapi apa pun yang terjadi. Kamu kekuatanku! 💪❤️
+            </p>
+          </div>
+        </div>
 
-        <div class="ucapan-wrapper">
-          <center>
-            <h1 class='ucapan'>Happy Birthday, My Love! 🎂</h1>
-            <p class='isiucapan'>
+        <!-- Page 4 - Birthday -->
+        <div class="page birthday-page after" data-page="3">
+          <h2 class="page-title">Ayla Rahma Dianty 🎉</h2>
+          
+          <div class="date-display">
+            <div class="date-text" id="dateText">Rabu, 10 Desember 2025</div>
+            <div class="date-subtitle">Hari Ulang Tahun Ayla!</div>
+          </div>
+
+          <div class="birthday-message">
+            <h3 class="birthday-title">Happy Birthday, My Love! 🎂</h3>
+            <p class="birthday-text">
               Hi Ayla, this is your special day and I want to say some things; 
               All of these years, I'm so grateful to have known you. Nothing can make my day infinitely better than you. 
               But I hope you know that you're always enough. I hope you live your life freely, joyfully, and peacefully. 
               No one in the world deserves a bad life, including you. 
               You deserve all the happiness in the world! ❤️🎂✨
             </p>
-          </center>
-        </div>
+          </div>
 
-        <p class="gift-text">🎁 Ada hadiah kejutan spesial untukmu! 🎁</p>
-        <center>
-          <a href="GANTI_DENGAN_LINK_DANA_KAGET_ANDA" class="dana-button" target="_blank">
-            💝 Kado Spesial Ulang Tahun! 💝
-          </a>
-        </center>
-      </section>
+          <div class="gift-section">
+            <p class="gift-title">🎁 Ada hadiah kejutan spesial untukmu! 🎁</p>
+            <a href="GANTI_DENGAN_LINK_DANA_KAGET_ANDA" class="gift-button" target="_blank">
+              💝 Kado Spesial Ulang Tahun! 💝
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdn.rawgit.com/bungfrangki/efeksalju/2a7805c7/efek-salju.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
